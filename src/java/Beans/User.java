@@ -118,6 +118,10 @@ public class User {
             crs.setString(1, username);
             crs.execute();
             
+            if (!crs.next()){
+                return false;
+            }
+            
             String hashedPassword = getHashedPassword();
             if (crs.getString("password").equals(hashedPassword)){
                 isValid = true;

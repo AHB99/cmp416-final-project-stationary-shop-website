@@ -1,0 +1,4 @@
+<c:if test="${empty loginUser or !loginUser.isValid}" >
+    <jsp:forward page="login.jsp" />
+</c:if>
+
