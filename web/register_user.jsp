@@ -4,6 +4,7 @@
     Author     : azada
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,16 +14,19 @@
     </head>
     <body>
         <h1>Register</h1>
-        <form action="action_register_user.jsp">
+        <c:if test="${!empty error_msg}">
+            <p style="color: red">${error_msg}</p>
+        </c:if>
+        <form action="register_user_action.jsp">
             <fieldset>
-                <label for="uname">Username:</label>
-                <input id="uname" type="text" name="uname" value="" required/>
-                <label for="pw">Password</label>
-                <input id="pw" type="password" name="pw" value="" required/>
-                <label for="fname">First name</label>
-                <input id="fname" type="text" name="fname" value="" required />
-                <label for="lname">Last name</label>
-                <input id="lname" type="text" name="lname" value="" required/>
+                <label for="username">Username:</label>
+                <input id="username" type="text" name="username" value="" required/>
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" value="" required/>
+                <label for="firstName">First name</label>
+                <input id="firstName" type="text" name="firstName" value="" required />
+                <label for="lastName">Last name</label>
+                <input id="lastName" type="text" name="lastName" value="" required/>
             </fieldset>
             <input type="submit" value="Register" />
         </form>

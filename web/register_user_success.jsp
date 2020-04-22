@@ -1,6 +1,6 @@
 <%-- 
-    Document   : action_register_user
-    Created on : Apr 22, 2020, 7:27:05 PM
+    Document   : register_user_success
+    Created on : Apr 22, 2020, 8:19:42 PM
     Author     : azada
 --%>
 
@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+        <h1>Successfully registered to system!</h1>
+        <form action="login.jsp"><input type="submit" value="Return to Login" /></form>
     </body>
 </html>
