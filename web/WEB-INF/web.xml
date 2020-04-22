@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <context-param>
+        <param-name>dbname</param-name>
+        <param-value>
+            jdbc:derby://localhost:1527/fproj_azadan
+        </param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbuser</param-name>
+        <param-value>
+            a
+        </param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbpass</param-name>
+        <param-value>
+            b
+        </param-value>
+    </context-param>
+    <welcome-file-list>
+        <welcome-file>db_credential_loader.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
