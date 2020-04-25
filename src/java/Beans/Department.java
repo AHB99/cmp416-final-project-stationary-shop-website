@@ -40,11 +40,11 @@ public class Department {
         this.departmentName = departmentName;
     }
     
-    public static boolean insertDepartment(String depName){
+    public boolean insertDepartment(){
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
             crs.setCommand("INSERT INTO DEPARTMENT (DEPARTMENT_NAME) VALUES (?)");
-            crs.setString(1,depName);
+            crs.setString(1,departmentName);
             crs.execute();
             return true;
         } catch (SQLException ex) {

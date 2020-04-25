@@ -13,8 +13,11 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:useBean id="departmentToInsert" class="Beans.Department">
+            <jsp:setProperty name="departmentToInsert" property="*" />
+        </jsp:useBean>
         <%
-            if (Beans.Department.insertDepartment(request.getParameter("department_name"))){        
+            if (departmentToInsert.insertDepartment()){        
         %>
             <c:set var="success_msg" value="Successfully inserted department!" scope="request" />
         <%

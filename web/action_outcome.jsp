@@ -21,8 +21,6 @@
                 <h1>${error_msg}</h1>
             </c:when>  
         </c:choose>
-        <form action="home.jsp" method="POST">
-            <input type="submit" value="Back to Main Menu" />
-        </form>        
+        <form action="home.jsp" method="POST"><input type="submit" value="Back to Main Menu" /></form>        
     </body>
 </html>

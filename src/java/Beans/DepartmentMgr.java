@@ -29,7 +29,7 @@ public class DepartmentMgr {
         departmentList = new ArrayList<>();
     }
     
-    private void retrieveDepartments(){
+    public void retrieveDepartments(){
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
             crs.setCommand("SELECT * FROM DEPARTMENT");

@@ -20,6 +20,7 @@
             <form action="insert_entity_action.jsp">
                 <select name="entity_choice">
                     <option value="department">Department</option>
+                    <option value="shop_branch">Shop Branch</option>
                 </select>
                 <input type="submit" value="Insert" />
             </form>
@@ -29,6 +30,7 @@
             <form action="view_entity_action.jsp">
                 <select name="entity_choice">
                     <option value="department">Department</option>
+                    <option value="shop_branch">Shop Branch</option>
                 </select>
                 <input type="submit" value="View" />
             </form>            
