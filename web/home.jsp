@@ -14,6 +14,24 @@
     </head>
     <body>
         <%@ include file="login_checker_gist" %>
-        <h1>Hello World!</h1>
+        <h1>Main Menu</h1>
+        <fieldset>
+            <legend>Insert New Entry</legend>
+            <form action="insert_entity_action.jsp">
+                <select name="entity_choice">
+                    <option value="department">Department</option>
+                </select>
+                <input type="submit" value="Insert" />
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend>View Data</legend>
+            <form action="view_entity_action.jsp">
+                <select name="entity_choice">
+                    <option value="department">Department</option>
+                </select>
+                <input type="submit" value="View" />
+            </form>            
+        </fieldset>
     </body>
 </html>

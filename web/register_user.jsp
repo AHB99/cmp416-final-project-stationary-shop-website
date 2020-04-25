@@ -17,7 +17,7 @@
         <c:if test="${!empty error_msg}">
             <p style="color: red">${error_msg}</p>
         </c:if>
-        <form action="register_user_action.jsp">
+        <form action="register_user_action.jsp" method="post">
             <fieldset>
                 <label for="username">Username:</label>
                 <input id="username" type="text" name="username" value="" required/>

@@ -20,7 +20,7 @@
             <c:remove var="login_error_msg" scope="request"/>
         </c:if>
 
-        <form action="login_action.jsp">
+        <form action="login_action.jsp" method="post">
             <fieldset>
                 <label for="username">Username:</label>
                 <input id="username" type="text" name="username" value="" required/>
