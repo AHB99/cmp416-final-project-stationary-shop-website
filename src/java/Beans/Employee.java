@@ -6,6 +6,7 @@
 package Beans;
 
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.rowset.CachedRowSet;
@@ -15,6 +16,15 @@ import javax.sql.rowset.CachedRowSet;
  * @author azada
  */
 public class Employee {
+
+    @Override
+    public String toString() {
+        return "Employee{" + "employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender + ", salary=" + salary + ", address=" + address + ", department=" + department + ", shopBranch=" + shopBranch + ", supervisor=" + supervisor + '}';
+    }
+
+    public Employee(int employeeId) {
+        this.employeeId = employeeId;
+    }
 
     public int getEmployeeId() {
         return employeeId;
@@ -104,7 +114,7 @@ public class Employee {
     }
     
     
-    private boolean insertEmployee(){
+    public boolean insertEmployee(){
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
             crs.setCommand("INSERT INTO EMPLOYEE (FIRST_NAME, LAST_NAME, GENDER, SALARY, ADDRESS, SUPERVISOR_ID, DEPARTMENT_ID, SHOP_ID) VALUES (?,?,?,?,?,?,?,?)");
@@ -113,9 +123,11 @@ public class Employee {
             crs.setString(3, gender);
             crs.setFloat(4, salary);
             crs.setString(5, address);
-            crs.setInt(6, supervisor.getEmployeeId());
-            crs.setInt(7, department.getDepartmentId());
-            crs.setInt(8, shopBranch.getShopId());
+            
+            if (supervisor != null) {crs.setInt(6, supervisor.getEmployeeId());} else {crs.setNull(6, Types.INTEGER);}
+            if (department != null) {crs.setInt(7, department.getDepartmentId());} else {crs.setNull(7, Types.INTEGER);}
+            if (shopBranch != null) {crs.setInt(8, shopBranch.getShopId());} else {crs.setNull(8, Types.INTEGER);}
+
             crs.execute();
             return true;
         } catch (SQLException ex) {
@@ -123,7 +135,7 @@ public class Employee {
         }
         return false;
     }
-    private int employeeId;
+    private Integer employeeId;
     private String firstName;
     private String lastName;
     private String gender;

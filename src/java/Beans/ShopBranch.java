@@ -16,6 +16,15 @@ import javax.sql.rowset.CachedRowSet;
  */
 public class ShopBranch {
 
+    @Override
+    public String toString() {
+        return "ShopBranch{" + "shopId=" + shopId + ", location=" + location + ", squareFootage=" + squareFootage + '}';
+    }
+
+    public ShopBranch(int shopId) {
+        this.shopId = shopId;
+    }
+
     public int getShopId() {
         return shopId;
     }
@@ -64,7 +73,7 @@ public class ShopBranch {
         return false;
     }
     
-    private int shopId;
+    private Integer shopId;
     private String location;
     private float squareFootage;
     

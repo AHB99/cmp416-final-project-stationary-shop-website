@@ -21,6 +21,7 @@
                 <select name="entity_choice">
                     <option value="department">Department</option>
                     <option value="shop_branch">Shop Branch</option>
+                    <option value="employee">Employee</option>
                 </select>
                 <input type="submit" value="Insert" />
             </form>
@@ -31,6 +32,7 @@
                 <select name="entity_choice">
                     <option value="department">Department</option>
                     <option value="shop_branch">Shop Branch</option>
+                    <option value="employee">Employee</option>
                 </select>
                 <input type="submit" value="View" />
             </form>            

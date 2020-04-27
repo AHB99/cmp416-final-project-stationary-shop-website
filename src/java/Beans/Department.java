@@ -16,6 +16,15 @@ import javax.sql.rowset.CachedRowSet;
  */
 public class Department {
 
+    @Override
+    public String toString() {
+        return "Department{" + "departmentId=" + departmentId + ", departmentName=" + departmentName + '}';
+    }
+
+    public Department(int departmentId) {
+        this.departmentId = departmentId;
+    }
+
     public int getDepartmentId() {
         return departmentId;
     }
@@ -53,7 +62,7 @@ public class Department {
         return false;
     }
     
-    private int departmentId;
+    private Integer departmentId;
     private String departmentName;
     
     
