@@ -36,11 +36,25 @@ public class ItemMgr {
             crs.execute();
             while (crs.next()) {
                 itemList.add(new Item(crs.getInt("item_id"),crs.getString("name"),
-                crs.getFloat("price"),crs.getString("brand")));
+                crs.getFloat("price"),new Brand(crs.getInt("brand"))));
             }
         } catch (SQLException ex) {
             Logger.getLogger(ItemMgr.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void retrieveItemsByShopSold(int shopId) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from sells s, item i, brands b where shop_id = ? and s.item_id = i.item_id and i.brand = b.brand_id");
+            crs.setInt(1, shopId);
+            crs.execute();
+            while (crs.next()) {
+                itemList.add(new Item(crs.getInt("item_id"), crs.getString("name"), crs.getFloat("price"), new Brand(crs.getInt("brand_id"), crs.getString("brand_name"))));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemMgr.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
     
     private ArrayList<Item> itemList= new ArrayList<>();

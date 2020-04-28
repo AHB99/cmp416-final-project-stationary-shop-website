@@ -16,6 +16,10 @@ import javax.sql.rowset.CachedRowSet;
  */
 public class Supplier {
 
+    public Supplier(Integer supplierId) {
+        this.supplierId = supplierId;
+    }
+
     public Integer getSupplierId() {
         return supplierId;
     }

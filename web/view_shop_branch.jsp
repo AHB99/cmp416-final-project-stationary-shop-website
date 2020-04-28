@@ -25,6 +25,9 @@
                     <th>
                         Square Footage
                     </th>
+                    <th>
+                        View Items Sold
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +35,11 @@
                 <tr>
                     <td>${shop.location}</td>
                     <td>${shop.squareFootage}</td>
+                    <form action="view_shop_branchs_sell_items.jsp">
+                        <input type="hidden" name="shopId" value="${shop.shopId}"/>
+                        <input type="hidden" name="location" value="${shop.location}"/>
+                        <td><input type="submit" value="View Sold Item Info" /></td>
+                    </form>
                 </tr>
             </c:forEach>
         </tbody>

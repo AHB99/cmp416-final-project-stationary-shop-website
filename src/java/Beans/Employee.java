@@ -153,7 +153,7 @@ public class Employee {
         }
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
-            crs.setCommand("select * from employee where employee_id = ?");
+            crs.setCommand("select * from employee e, department d where e.employee_id = ? and e.department_id = d.department_id");
             crs.setInt(1, employeeId);
             crs.execute();
             if (crs.next()) {
@@ -162,7 +162,7 @@ public class Employee {
                 gender = crs.getString("gender");
                 salary = crs.getFloat("salary");
                 address = crs.getString("address");
-                department = new Department(crs.getInt("department_id"));
+                department = new Department(crs.getInt("department_id"), crs.getString("department_name"));
                 shopBranch = new ShopBranch(crs.getInt("shop_id"));
                 supervisor = new Employee(crs.getInt("supervisor_id"));
             }

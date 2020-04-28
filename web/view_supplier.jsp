@@ -28,6 +28,9 @@
                     <th>
                         Email ID
                     </th>
+                    <th>
+                        Items Supplied
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -36,11 +39,15 @@
                         <td>${supplier.supplierName}</td>
                         <td>${supplier.telephone}</td>
                         <td>${supplier.email}</td>
+                        <form action="view_suppliers_supplied_items.jsp">
+                            <input type="hidden" name="supplierId" value="${supplier.supplierId}"/>
+                            <input type="hidden" name="supplierName" value="${supplier.supplierName}"/>
+                            <td><input type="submit" value="View Supplied Item Info" /></td>
+                        </form>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
         <form action="home.jsp" method="POST"><input type="submit" value="Back to Main Menu" /></form> 
-    </body>
     </body>
 </html>

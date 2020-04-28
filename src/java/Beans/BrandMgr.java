@@ -34,7 +34,7 @@ public class BrandMgr {
             crs.setCommand("SELECT * FROM BRANDS");
             crs.execute();
             while (crs.next()) {
-                brandList.add(new Brand(crs.getString("brand")));
+                brandList.add(new Brand(crs.getInt("brand_id"), crs.getString("brand_name")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(BrandMgr.class.getName()).log(Level.SEVERE, null, ex);

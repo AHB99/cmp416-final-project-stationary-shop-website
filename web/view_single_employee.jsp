@@ -34,11 +34,7 @@
                 <th scope="row">Address: </th><td>${selectedEmployee.address}</td>
             </tr>
             <tr>
-                <th scope="row">Department: </th>
-            <form action="view_single_department.jsp">
-                <input type="hidden" name="departmentId" value="${selectedEmployee.department.departmentId}" />
-                <td><input type="submit" value="View Department Info" /></td>
-            </form>
+                <th scope="row">Department </th><td>${selectedEmployee.department.departmentName}</td>
             </tr>
             <tr>
                 <th scope="row">Shop Branch: </th>

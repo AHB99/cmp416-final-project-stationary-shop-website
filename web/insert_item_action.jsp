@@ -16,6 +16,12 @@
         <jsp:useBean id="itemToInsert" class="Beans.Item">
             <jsp:setProperty name="itemToInsert" property="*" />
         </jsp:useBean>
+        
+        <jsp:useBean id="itemBrandToInsert" class="Beans.Brand">
+            <jsp:setProperty name="itemBrandToInsert" property="*" />
+        </jsp:useBean>
+        <c:set target="${itemToInsert}" property="itemBrand" value="${itemBrandToInsert}" /> 
+        
         <c:choose >
             <c:when test="${itemToInsert.insertItem()}">
                 <c:set var="success_msg" value="Successfully inserted item!" scope="request" />

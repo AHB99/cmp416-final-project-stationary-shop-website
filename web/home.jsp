@@ -25,6 +25,8 @@
                     <option value="brand">Brand</option>
                     <option value="item">Item</option>
                     <option value="supplier">Supplier</option>
+                    <option value="supplied_item">Item for Supplier</option>
+                    <option value="seller_item">Items for Shop</option>
 
                 </select>
                 <input type="submit" value="Insert" />

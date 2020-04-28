@@ -36,11 +36,8 @@
                     <td>${employee.gender}</td>
                     <td>${employee.salary}</td>
                     <td>${employee.address}</td>
+                    <td>${employee.department.departmentName}</td>
 
-                    <form action="view_single_department.jsp">
-                        <input type="hidden" name="departmentId" value="${employee.department.departmentId}" />
-                        <td><input type="submit" value="View Department Info" /></td>
-                    </form>
                     <form action="view_single_shop_branch.jsp">
                         <input type="hidden" name="shopId" value="${employee.shopBranch.shopId}"/>
                         <td><input type="submit" value="View Shop Branch Info" /></td>

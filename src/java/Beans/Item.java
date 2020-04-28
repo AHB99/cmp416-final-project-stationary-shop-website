@@ -16,6 +16,25 @@ import javax.sql.rowset.CachedRowSet;
  */
 public class Item {
 
+    public Item(Integer itemId) {
+        this.itemId = itemId;
+    }
+
+    public Brand getItemBrand() {
+        return itemBrand;
+    }
+
+    public void setItemBrand(Brand itemBrand) {
+        this.itemBrand = itemBrand;
+    }
+
+    public Item(Integer itemId, String itemName, float itemPrice, Brand itemBrand) {
+        this.itemId = itemId;
+        this.itemName = itemName;
+        this.itemPrice = itemPrice;
+        this.itemBrand = itemBrand;
+    }
+
     public Integer getItemId() {
         return itemId;
     }
@@ -40,20 +59,7 @@ public class Item {
         this.itemPrice = itemPrice;
     }
 
-    public String getItemBrand() {
-        return itemBrand;
-    }
 
-    public void setItemBrand(String itemBrand) {
-        this.itemBrand = itemBrand;
-    }
-
-    public Item(Integer itemId, String itemName, float itemPrice, String itemBrand) {
-        this.itemId = itemId;
-        this.itemName = itemName;
-        this.itemPrice = itemPrice;
-        this.itemBrand = itemBrand;
-    }
 
     public Item() {
     }
@@ -64,7 +70,7 @@ public class Item {
             crs.setCommand("INSERT INTO ITEM (NAME, PRICE, BRAND) VALUES (?,?,?)");
             crs.setString(1, itemName);
             crs.setFloat(2, itemPrice);
-            crs.setString(3, itemBrand);
+            crs.setInt(3, itemBrand.getBrandId());
 
             crs.execute();
             return true;
@@ -77,5 +83,5 @@ public class Item {
     private Integer itemId;
     private String itemName;
     private float itemPrice;
-    private String itemBrand;
+    private Brand itemBrand;
 }

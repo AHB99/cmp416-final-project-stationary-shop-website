@@ -31,12 +31,12 @@ public class EmployeeMgr {
     public void retrieveEmployees(){
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
-            crs.setCommand("SELECT * FROM EMPLOYEE");
+            crs.setCommand("select * from employee e, department d where e.department_id = d.department_id");
             crs.execute();
             while (crs.next()) {
                 employeeList.add(new Employee(crs.getInt("employee_id"), crs.getString("first_name"),
                 crs.getString("last_name"),crs.getString("gender"),crs.getFloat("salary"),
-                crs.getString("address"),new Department(crs.getInt("department_id")),
+                crs.getString("address"),new Department(crs.getInt("department_id"), crs.getString("department_name")),
                 new ShopBranch(crs.getInt("shop_id")),
                 new Employee(crs.getInt("supervisor_id"))));              
             }

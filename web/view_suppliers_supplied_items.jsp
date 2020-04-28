@@ -1,6 +1,6 @@
 <%-- 
-    Document   : view_item
-    Created on : Apr 28, 2020, 7:50:16 PM
+    Document   : view_suppliers_supplied_items
+    Created on : Apr 28, 2020, 10:47:47 PM
     Author     : azada
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,9 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>All Items</h1>
-        <jsp:useBean id="itemMgr" class="Beans.ItemMgr"/>
-        ${itemMgr.retrieveItems()}
+        <jsp:useBean id="suppliedItemMgr" class="Beans.SuppliedItemMgr"/>
+        <%suppliedItemMgr.retrieveSuppliedItemsBySupplier(Integer.parseInt(request.getParameter("supplierId")));%>
+        
+        <h1>${param.supplierName}'s Supplied Items</h1>
+
         <table border="1">
             <thead>
                 <tr>
@@ -22,19 +24,24 @@
                         Name
                     </th>
                     <th>
-                        Price
+                        Selling Price
                     </th>
                     <th>
                         Brand
                     </th>
+                    <th>
+                        Supplier Price
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${itemMgr.itemList}" var="item">
+                <c:forEach items="${suppliedItemMgr.suppliedItemList}" var="suppliedItem">
                     <tr>
-                        <td>${item.itemName}</td>
-                        <td>${item.itemPrice}</td>
-                        <td>${item.itemBrand.brandName}</td>
+                        <td>${suppliedItem.item.itemName}</td>
+                        <td>${suppliedItem.item.itemPrice}</td>
+                        <td>${suppliedItem.item.itemBrand.brandName}</td>
+                        <td>${suppliedItem.supplierPrice}</td>
+
                     </tr>
                 </c:forEach>
             </tbody>

@@ -23,9 +23,9 @@
                 <input type="text" id = "item_name" name="itemName" value="" /><br/>
                 <label for="item_price">Price: </label>
                 <input type="number" id = "item_price" name="itemPrice" value="" /><br/>
-                <select id="brand_name" name="itemBrand">
+                <select id="brand_name" name="brandId">
                     <c:forEach items="${brandMgr.brandList}" var="brand">
-                        <option value="${brand.brandName}">${brand.brandName}</option>
+                        <option value="${brand.brandId}">${brand.brandName}</option>
                     </c:forEach>        
                 </select><br/>
 

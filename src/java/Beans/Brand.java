@@ -16,6 +16,23 @@ import javax.sql.rowset.CachedRowSet;
  */
 public class Brand {
 
+    public Brand(Integer brandId) {
+        this.brandId = brandId;
+    }
+
+    public Integer getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Integer brandId) {
+        this.brandId = brandId;
+    }
+
+    public Brand(Integer brandId, String brandName) {
+        this.brandId = brandId;
+        this.brandName = brandName;
+    }
+
     public String getBrandName() {
         return brandName;
     }
@@ -24,9 +41,6 @@ public class Brand {
         this.brandName = brandName;
     }
 
-    public Brand(String brandName) {
-        this.brandName = brandName;
-    }
 
     public Brand() {
     }
@@ -34,7 +48,7 @@ public class Brand {
     public boolean insertBrand() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
-            crs.setCommand("INSERT INTO BRANDS (BRAND) VALUES (?)");
+            crs.setCommand("INSERT INTO BRANDS (brand_name) VALUES (?)");
             crs.setString(1, brandName);
             crs.execute();
             return true;
@@ -44,7 +58,7 @@ public class Brand {
         return false;
     }
     
-    
+    private Integer brandId;
     private String brandName;
     
 }

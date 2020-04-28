@@ -1,9 +1,10 @@
 <%-- 
-    Document   : view_item
-    Created on : Apr 28, 2020, 7:50:16 PM
+    Document   : view_shop_branchs_sell_items
+    Created on : Apr 28, 2020, 11:16:34 PM
     Author     : azada
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,9 +13,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>All Items</h1>
         <jsp:useBean id="itemMgr" class="Beans.ItemMgr"/>
-        ${itemMgr.retrieveItems()}
+        <%itemMgr.retrieveItemsByShopSold(Integer.parseInt(request.getParameter("shopId")));%>
+
+        <h1>${param.location} Branch's Supplied Items</h1>
+
         <table border="1">
             <thead>
                 <tr>
