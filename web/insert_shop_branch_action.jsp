@@ -16,15 +16,15 @@
         <jsp:useBean id="shopToInsert" class="Beans.ShopBranch">
             <jsp:setProperty name="shopToInsert" property="*" />
         </jsp:useBean>
-        <%
-            if (shopToInsert.insertShopBranch()) {
-        %>
-        <c:set var="success_msg" value="Successfully inserted shop branch!" scope="request" />
-        <%
-        } else {
-        %>
-        <c:set var="error_msg" value="Error inserting shop branch!" scope="request" />
-        <%  }%>
+        <c:choose >
+            <c:when test="${shopToInsert.insertShopBranch()}">
+                <c:set var="success_msg" value="Successfully inserted shop branch!" scope="request" />
+
+            </c:when>
+            <c:otherwise>
+                <c:set var="error_msg" value="Error inserting shop branch!" scope="request" />
+            </c:otherwise>
+        </c:choose>
         <jsp:forward page="action_outcome.jsp" />
 </body>
 </html>

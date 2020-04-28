@@ -16,15 +16,15 @@
         <jsp:useBean id="departmentToInsert" class="Beans.Department">
             <jsp:setProperty name="departmentToInsert" property="*" />
         </jsp:useBean>
-        <%
-            if (departmentToInsert.insertDepartment()){        
-        %>
-            <c:set var="success_msg" value="Successfully inserted department!" scope="request" />
-        <%
-            } else{
-        %>
-            <c:set var="error_msg" value="Error inserting department!" scope="request" />
-        <%  }%>
+        
+        <c:choose>
+            <c:when test="${departmentToInsert.insertDepartment()}" >
+                <c:set var="success_msg" value="Successfully inserted department!" scope="request" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="error_msg" value="Error inserting department!" scope="request" />
+            </c:otherwise>
+        </c:choose>
         <jsp:forward page="action_outcome.jsp" />
     </body>
 </html>
