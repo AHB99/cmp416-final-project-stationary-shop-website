@@ -15,33 +15,34 @@ import javax.sql.rowset.CachedRowSet;
  *
  * @author azada
  */
-public class BrandMgr {
+public class ItemMgr {
 
-    public ArrayList<Brand> getBrandList() {
-        return brandList;
+    public ArrayList<Item> getItemList() {
+        return itemList;
     }
 
-    public void setBrandList(ArrayList<Brand> brandList) {
-        this.brandList = brandList;
+    public void setItemList(ArrayList<Item> itemList) {
+        this.itemList = itemList;
     }
 
-    public BrandMgr() {
+    public ItemMgr() {
     }
     
-    public void retrieveBrands() {
+    
+    public void retrieveItems() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
-            crs.setCommand("SELECT * FROM BRANDS");
+            crs.setCommand("SELECT * FROM ITEM");
             crs.execute();
             while (crs.next()) {
-                brandList.add(new Brand(crs.getString("brand")));
+                itemList.add(new Item(crs.getInt("item_id"),crs.getString("name"),
+                crs.getFloat("price"),crs.getString("brand")));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(BrandMgr.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItemMgr.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
+    private ArrayList<Item> itemList= new ArrayList<>();
     
-    private ArrayList<Brand> brandList = new ArrayList<>();
-
 }

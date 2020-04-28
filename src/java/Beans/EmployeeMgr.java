@@ -26,7 +26,6 @@ public class EmployeeMgr {
     }
 
     public EmployeeMgr() {
-        employeeList = new ArrayList<>();
     }
     
     public void retrieveEmployees(){
@@ -45,6 +44,6 @@ public class EmployeeMgr {
             Logger.getLogger(EmployeeMgr.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private ArrayList<Employee> employeeList;
+    private ArrayList<Employee> employeeList= new ArrayList<>();
     
 }

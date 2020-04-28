@@ -26,7 +26,6 @@ public class DepartmentMgr {
     }
 
     public DepartmentMgr() {
-        departmentList = new ArrayList<>();
     }
     
     public void retrieveDepartments(){
@@ -41,6 +40,6 @@ public class DepartmentMgr {
             Logger.getLogger(DepartmentMgr.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private ArrayList<Department> departmentList;
+    private ArrayList<Department> departmentList= new ArrayList<>();
     
 }

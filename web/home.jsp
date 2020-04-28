@@ -23,6 +23,7 @@
                     <option value="shop_branch">Shop Branch</option>
                     <option value="employee">Employee</option>
                     <option value="brand">Brand</option>
+                    <option value="item">Item</option>
 
                 </select>
                 <input type="submit" value="Insert" />
@@ -36,6 +37,7 @@
                     <option value="shop_branch">Shop Branch</option>
                     <option value="employee">Employee</option>
                     <option value="brand">Brand</option>
+                    <option value="item">Item</option>
 
                 </select>
                 <input type="submit" value="View" />

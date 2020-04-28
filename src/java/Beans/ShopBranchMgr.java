@@ -27,7 +27,6 @@ public class ShopBranchMgr {
 
 
     public ShopBranchMgr() {
-        shopList = new ArrayList<>();
     }
     
     public void retrieveShopBranches(){
@@ -43,6 +42,6 @@ public class ShopBranchMgr {
         }
     }
     
-    private ArrayList<ShopBranch> shopList;
+    private ArrayList<ShopBranch> shopList= new ArrayList<>();
     
 }
