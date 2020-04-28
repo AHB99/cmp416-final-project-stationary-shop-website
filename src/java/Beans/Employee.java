@@ -112,21 +112,32 @@ public class Employee {
 
     public Employee() {
     }
-    
-    
-    public boolean insertEmployee(){
+
+    public boolean insertEmployee() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
             crs.setCommand("INSERT INTO EMPLOYEE (FIRST_NAME, LAST_NAME, GENDER, SALARY, ADDRESS, SUPERVISOR_ID, DEPARTMENT_ID, SHOP_ID) VALUES (?,?,?,?,?,?,?,?)");
-            crs.setString(1,firstName);
+            crs.setString(1, firstName);
             crs.setString(2, lastName);
             crs.setString(3, gender);
             crs.setFloat(4, salary);
             crs.setString(5, address);
-            
-            if (supervisor != null) {crs.setInt(6, supervisor.getEmployeeId());} else {crs.setNull(6, Types.INTEGER);}
-            if (department != null) {crs.setInt(7, department.getDepartmentId());} else {crs.setNull(7, Types.INTEGER);}
-            if (shopBranch != null) {crs.setInt(8, shopBranch.getShopId());} else {crs.setNull(8, Types.INTEGER);}
+
+            if (supervisor != null) {
+                crs.setInt(6, supervisor.getEmployeeId());
+            } else {
+                crs.setNull(6, Types.INTEGER);
+            }
+            if (department != null) {
+                crs.setInt(7, department.getDepartmentId());
+            } else {
+                crs.setNull(7, Types.INTEGER);
+            }
+            if (shopBranch != null) {
+                crs.setInt(8, shopBranch.getShopId());
+            } else {
+                crs.setNull(8, Types.INTEGER);
+            }
 
             crs.execute();
             return true;
@@ -135,6 +146,31 @@ public class Employee {
         }
         return false;
     }
+
+    public void retrieveEmployee() {
+        if (employeeId == null) {
+            return;
+        }
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from employee where employee_id = ?");
+            crs.setInt(1, employeeId);
+            crs.execute();
+            if (crs.next()) {
+                firstName = crs.getString("first_name");
+                lastName = crs.getString("last_name");
+                gender = crs.getString("gender");
+                salary = crs.getFloat("salary");
+                address = crs.getString("address");
+                department = new Department(crs.getInt("department_id"));
+                shopBranch = new ShopBranch(crs.getInt("shop_id"));
+                supervisor = new Employee(crs.getInt("supervisor_id"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private Integer employeeId;
     private String firstName;
     private String lastName;

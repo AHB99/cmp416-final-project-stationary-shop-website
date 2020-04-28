@@ -59,7 +59,6 @@ public class ShopBranch {
     }
     
     public boolean insertShopBranch(){
-        System.out.println("sq: " + squareFootage);
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
             crs.setCommand("INSERT INTO SHOP_BRANCH (LOCATION, SQUARE_FOOTAGE) VALUES (?,?)");
@@ -71,6 +70,24 @@ public class ShopBranch {
             Logger.getLogger(ShopBranch.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+    public void retrieveShopBranch(){
+        if (shopId == null) {
+            return;
+        }
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from shop_branch where shop_id = ?");
+            crs.setInt(1, shopId);
+            crs.execute();
+            if (crs.next()) {
+                location = crs.getString("location");
+                squareFootage = crs.getFloat("square_footage");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopBranch.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private Integer shopId;

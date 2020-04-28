@@ -61,6 +61,24 @@ public class Department {
         }
         return false;
     }
+    /**
+     * Updates fields from db
+     * Preconditions: Assumes departmentId set
+     */
+    public void retrieveDepartment(){
+        if (departmentId == null) return;
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from department where department_id = ?");
+            crs.setInt(1, departmentId);
+            crs.execute();
+            if (crs.next()){
+                departmentName = crs.getString("department_name");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Department.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     private Integer departmentId;
     private String departmentName;
