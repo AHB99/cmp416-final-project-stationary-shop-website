@@ -29,6 +29,9 @@
             <c:when test="${param.entity_choice == 'item'}">
                 <jsp:forward page="insert_item.jsp" />
             </c:when>
+            <c:when test="${param.entity_choice == 'supplier'}">
+                <jsp:forward page="insert_supplier.jsp" />
+            </c:when>
         </c:choose>
     </body>
 </html>
