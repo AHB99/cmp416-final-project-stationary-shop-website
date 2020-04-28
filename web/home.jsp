@@ -22,6 +22,8 @@
                     <option value="department">Department</option>
                     <option value="shop_branch">Shop Branch</option>
                     <option value="employee">Employee</option>
+                    <option value="brand">Brand</option>
+
                 </select>
                 <input type="submit" value="Insert" />
             </form>
@@ -33,6 +35,8 @@
                     <option value="department">Department</option>
                     <option value="shop_branch">Shop Branch</option>
                     <option value="employee">Employee</option>
+                    <option value="brand">Brand</option>
+
                 </select>
                 <input type="submit" value="View" />
             </form>            
