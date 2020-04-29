@@ -35,6 +35,9 @@
                     <th>
                         Delete
                     </th>
+                    <th>
+                        Update
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -48,6 +51,11 @@
                             <input type="hidden" name="supplierId" value="${param.supplierId}"/>
                             <input type="hidden" name="itemId" value="${suppliedItem.item.itemId}"/>
                             <td><input type="submit" value="Delete" /></td>
+                        </form>
+                        <form action="update_supplied_item.jsp">
+                            <input type="hidden" name="supplierId" value="${param.supplierId}"/>
+                            <input type="hidden" name="itemId" value="${suppliedItem.item.itemId}"/>
+                            <td><input type="submit" value="Update" /></td>
                         </form>
                     </tr>
                 </c:forEach>

@@ -79,6 +79,43 @@ public class SuppliedItem {
         }
         return false;
     }
+    
+    public void retrieveSuppliedItem() {
+        if (supplier == null || item == null) {
+            return;
+        }
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from supplies ss, item i, brands b, supplier s where s.supplier_id = ? and i.item_id = ? and ss.item_id = i.item_id and ss.supplier_id = s.supplier_id and i.brand = b.brand_id");
+            crs.setInt(1, supplier.getSupplierId());
+            crs.setInt(2, item.getItemId());
+
+            crs.execute();
+            if (crs.next()) {
+                supplier = new Supplier(crs.getInt("supplier_id"), crs.getString("supplier_name"), crs.getString("supplier_telephone"), crs.getString("supplier_emailid"));
+                item = new Item(crs.getInt("item_id"), crs.getString("name"), crs.getFloat("price"), new Brand(crs.getInt("brand")));
+                supplierPrice = crs.getFloat("supplier_price");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SuppliedItem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public boolean updateSuppliedItem() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("update SUPPLIES set SUPPLIER_PRICE = ? where supplier_id = ? and item_id = ?");
+            crs.setFloat(1, supplierPrice);
+            crs.setInt(2, supplier.getSupplierId());
+            crs.setInt(3, item.getItemId());
+
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(SuppliedItem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
         
     private Supplier supplier;
     private Item item;
