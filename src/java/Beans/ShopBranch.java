@@ -103,6 +103,22 @@ public class ShopBranch {
         return false;
     }
     
+    public boolean updateShopBranch() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("update shop_branch set location = ?, square_footage = ? where shop_id = ?");
+            crs.setString(1, location);
+            crs.setFloat(2, squareFootage);
+
+            crs.setInt(3, shopId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopBranch.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return false;
+    }
+    
     private Integer shopId;
     private String location;
     private float squareFootage;

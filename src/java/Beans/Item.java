@@ -93,6 +93,42 @@ public class Item {
         return false;
     }
     
+    
+    public void retrieveItem() {
+        if (itemId == null) {
+            return;
+        }
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM ITEM i, brands b where i.brand = b.brand_id and i.item_id = ?");
+            crs.setInt(1, itemId);
+            crs.execute();
+            if (crs.next()) {
+                itemName = crs.getString("name");
+                itemPrice = crs.getFloat("price");
+                itemBrand = new Brand(crs.getInt("brand"), crs.getString("brand_name"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public boolean updateItem() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("update ITEM set NAME = ?, PRICE = ?, BRAND = ? where item_id = ?");
+            crs.setString(1, itemName);
+            crs.setFloat(2, itemPrice);
+            crs.setInt(3, itemBrand.getBrandId());
+            crs.setInt(4, itemId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     private Integer itemId;
     private String itemName;
     private float itemPrice;

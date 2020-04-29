@@ -31,6 +31,9 @@
                     <th>
                         Delete
                     </th>
+                    <th>
+                        Update
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -46,6 +49,10 @@
                     <form action="delete_shop_branch_action.jsp">
                         <input type="hidden" name="shopId" value="${shop.shopId}"/>
                         <td><input type="submit" value="Delete" /></td>
+                    </form>
+                    <form action="update_shop_branch.jsp">
+                        <input type="hidden" name="shopId" value="${shop.shopId}"/>
+                        <td><input type="submit" value="Update" /></td>
                     </form>
                 </tr>
             </c:forEach>

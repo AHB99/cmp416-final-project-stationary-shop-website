@@ -183,6 +183,42 @@ public class Employee {
         }
         return false;
     }
+    
+    public boolean updateEmployee() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("UPDATE EMPLOYEE set FIRST_NAME = ?, LAST_NAME = ?, GENDER = ?, SALARY = ?, ADDRESS = ?, SUPERVISOR_ID = ?, DEPARTMENT_ID = ?, SHOP_ID = ? WHERE EMPLOYEE_ID = ?");
+            crs.setString(1, firstName);
+            crs.setString(2, lastName);
+            crs.setString(3, gender);
+            crs.setFloat(4, salary);
+            crs.setString(5, address);
+
+            if (supervisor != null) {
+                crs.setInt(6, supervisor.getEmployeeId());
+            } else {
+                crs.setNull(6, Types.INTEGER);
+            }
+            if (department != null) {
+                crs.setInt(7, department.getDepartmentId());
+            } else {
+                crs.setNull(7, Types.INTEGER);
+            }
+            if (shopBranch != null) {
+                crs.setInt(8, shopBranch.getShopId());
+            } else {
+                crs.setNull(8, Types.INTEGER);
+            }
+            
+            crs.setInt(9, employeeId);
+
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     private Integer employeeId;
     private String firstName;

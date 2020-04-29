@@ -27,6 +27,7 @@
                     <th>Shop Branch</th>
                     <th>Supervisor</th>
                     <th>Delete</th>
+                    <th>Update</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,6 +51,11 @@
                     <form action="delete_employee_action.jsp">
                         <input type="hidden" name="employeeId" value="${employee.employeeId}"/>
                         <td><input type="submit" value="Delete" /></td>
+                    </form>
+                    <form action="update_employee.jsp">
+                        <input type="hidden" name="employeeId" value="${employee.employeeId}"/>
+                        
+                        <td><input type="submit" value="Update" /></td>
                     </form>
                 </tr>
             </c:forEach>

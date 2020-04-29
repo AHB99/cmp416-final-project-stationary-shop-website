@@ -71,6 +71,38 @@ public class Brand {
         return false;
     }
     
+    public void retrieveBrand() {
+        if (brandId == null) {
+            return;
+        }
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM BRANDS where brand_id = ?");
+            crs.setInt(1, brandId);
+            crs.execute();
+            while (crs.next()) {
+                brandName = crs.getString("brand_name");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Brand.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public boolean updateBrand() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("UPDATE BRANDS set brand_name = ? where brand_id = ?");
+            crs.setString(1, brandName);
+            crs.setInt(2, brandId);
+
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Brand.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     private Integer brandId;
     private String brandName;
     

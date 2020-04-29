@@ -79,6 +79,22 @@ public class Supplier {
         return false;
     }
     
+    public boolean updateSupplier() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("UPDATE SUPPLIER SET SUPPLIER_NAME = ?, SUPPLIER_TELEPHONE = ?, SUPPLIER_EMAILID = ? WHERE SUPPLIER_ID = ?");
+            crs.setString(1, supplierName);
+            crs.setString(2, telephone);
+            crs.setString(3, email);
+            crs.setInt(4, supplierId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Supplier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     public boolean deleteSupplier() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
@@ -90,6 +106,25 @@ public class Supplier {
             Logger.getLogger(Supplier.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+    public void retrieveSupplier() {
+        if (supplierId == null) {
+            return;
+        }
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM SUPPLIER where supplier_id = ?");
+            crs.setInt(1, supplierId);
+            crs.execute();
+            if (crs.next()) {
+                supplierName = crs.getString("supplier_name");
+                telephone = crs.getString("supplier_telephone");
+                email = crs.getString("supplier_emailid");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Supplier.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private Integer supplierId;

@@ -25,6 +25,9 @@
                     <th>
                         Delete
                     </th>
+                    <th>
+                        Update
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +37,10 @@
                         <form action="delete_brand_action.jsp">
                             <input type="hidden" name="brandId" value="${brand.brandId}"/>
                             <td><input type="submit" value="Delete" /></td>
+                        </form>
+                        <form action="update_brand.jsp">
+                            <input type="hidden" name="brandId" value="${brand.brandId}"/>
+                            <td><input type="submit" value="Update" /></td>
                         </form>
                     </tr>
                     
