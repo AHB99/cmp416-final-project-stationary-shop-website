@@ -90,6 +90,19 @@ public class ShopBranch {
         }
     }
     
+    public boolean deleteShopBranch() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("delete from shop_branch where shop_id = ?");
+            crs.setInt(1, shopId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopBranch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     private Integer shopId;
     private String location;
     private float squareFootage;

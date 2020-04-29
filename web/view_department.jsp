@@ -22,13 +22,20 @@
                     <th>
                         Department Name
                     </th>
+                    <th>
+                        Delete
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${departmentMgr.departmentList}" var="dep">
                     <tr>
                         <td>${dep.departmentName}</td>
-                    </tr>
+                        <form action="delete_department_action.jsp">
+                            <input type="hidden" name="departmentId" value="${dep.departmentId}"/>
+                            <td><input type="submit" value="Delete" /></td>
+                        </form>
+                    </tr>                 
                 </c:forEach>
             </tbody>
         </table>

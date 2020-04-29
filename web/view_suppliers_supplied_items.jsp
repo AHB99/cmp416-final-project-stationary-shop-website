@@ -32,6 +32,9 @@
                     <th>
                         Supplier Price
                     </th>
+                    <th>
+                        Delete
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -41,7 +44,11 @@
                         <td>${suppliedItem.item.itemPrice}</td>
                         <td>${suppliedItem.item.itemBrand.brandName}</td>
                         <td>${suppliedItem.supplierPrice}</td>
-
+                        <form action="delete_supplied_item_action.jsp">
+                            <input type="hidden" name="supplierId" value="${param.supplierId}"/>
+                            <input type="hidden" name="itemId" value="${suppliedItem.item.itemId}"/>
+                            <td><input type="submit" value="Delete" /></td>
+                        </form>
                     </tr>
                 </c:forEach>
             </tbody>

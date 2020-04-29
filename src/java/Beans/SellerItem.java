@@ -54,6 +54,23 @@ public class SellerItem {
         }
         return false;
     }
+    
+    public boolean deleteSellerItem() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("delete from sells where shop_id = ? and item_id = ?");
+            crs.setInt(1, shopBranch.getShopId());
+            crs.setInt(2, item.getItemId());
+
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(SellerItem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    
     private ShopBranch shopBranch;
     private Item item;
 }

@@ -26,7 +26,10 @@
                         Square Footage
                     </th>
                     <th>
-                        View Items Sold
+                        Items Sold
+                    </th>
+                    <th>
+                        Delete
                     </th>
                 </tr>
             </thead>
@@ -39,6 +42,10 @@
                         <input type="hidden" name="shopId" value="${shop.shopId}"/>
                         <input type="hidden" name="location" value="${shop.location}"/>
                         <td><input type="submit" value="View Sold Item Info" /></td>
+                    </form>
+                    <form action="delete_shop_branch_action.jsp">
+                        <input type="hidden" name="shopId" value="${shop.shopId}"/>
+                        <td><input type="submit" value="Delete" /></td>
                     </form>
                 </tr>
             </c:forEach>

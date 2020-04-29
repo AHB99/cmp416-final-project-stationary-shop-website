@@ -58,6 +58,19 @@ public class Brand {
         return false;
     }
     
+    public boolean deleteBrand() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("delete from brands where brand_id = ?");
+            crs.setInt(1, brandId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Brand.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     private Integer brandId;
     private String brandName;
     

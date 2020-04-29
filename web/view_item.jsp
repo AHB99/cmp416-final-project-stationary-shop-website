@@ -27,6 +27,9 @@
                     <th>
                         Brand
                     </th>
+                    <th>
+                        Delete
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +38,10 @@
                         <td>${item.itemName}</td>
                         <td>${item.itemPrice}</td>
                         <td>${item.itemBrand.brandName}</td>
+                        <form action="delete_item_action.jsp">
+                            <input type="hidden" name="itemId" value="${item.itemId}"/>
+                            <td><input type="submit" value="Delete" /></td>
+                        </form>
                     </tr>
                 </c:forEach>
             </tbody>

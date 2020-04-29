@@ -80,6 +80,19 @@ public class Item {
         return false;
     }
     
+    public boolean deleteItem() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("delete from item where item_id = ?");
+            crs.setInt(1, itemId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return false;
+    }
+    
     private Integer itemId;
     private String itemName;
     private float itemPrice;

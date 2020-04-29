@@ -170,6 +170,19 @@ public class Employee {
             Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public boolean deleteEmployee() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("delete from employee where employee_id = ?");
+            crs.setInt(1, employeeId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     private Integer employeeId;
     private String firstName;

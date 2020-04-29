@@ -61,6 +61,20 @@ public class Department {
         }
         return false;
     }
+    
+    public boolean deleteDepartment() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("delete from department where department_id = ?");
+            crs.setInt(1, departmentId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Department.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     /**
      * Updates fields from db
      * Preconditions: Assumes departmentId set

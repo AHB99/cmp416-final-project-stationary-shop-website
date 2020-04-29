@@ -31,6 +31,9 @@
                     <th>
                         Items Supplied
                     </th>
+                    <th>
+                        Delete
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +46,10 @@
                             <input type="hidden" name="supplierId" value="${supplier.supplierId}"/>
                             <input type="hidden" name="supplierName" value="${supplier.supplierName}"/>
                             <td><input type="submit" value="View Supplied Item Info" /></td>
+                        </form>
+                        <form action="delete_supplier_action.jsp">
+                            <input type="hidden" name="supplierId" value="${supplier.supplierId}"/>
+                            <td><input type="submit" value="Delete" /></td>
                         </form>
                     </tr>
                 </c:forEach>

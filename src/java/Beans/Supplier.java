@@ -78,6 +78,20 @@ public class Supplier {
         }
         return false;
     }
+    
+    public boolean deleteSupplier() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("delete from supplier where supplier_id = ?");
+            crs.setInt(1, supplierId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Supplier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     private Integer supplierId;
     private String supplierName;
     private String telephone;

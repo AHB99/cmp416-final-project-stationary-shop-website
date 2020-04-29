@@ -65,6 +65,21 @@ public class SuppliedItem {
         return false;
     }
     
+    public boolean deleteSuppliedItem() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("delete from supplies where supplier_id = ? and item_id = ?");
+            crs.setInt(1, supplier.getSupplierId());
+            crs.setInt(2, item.getItemId());
+
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(SuppliedItem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+        
     private Supplier supplier;
     private Item item;
     private float supplierPrice;

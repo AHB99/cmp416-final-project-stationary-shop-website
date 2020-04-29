@@ -22,13 +22,21 @@
                     <th>
                         Brand Name
                     </th>
+                    <th>
+                        Delete
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${brandMgr.brandList}" var="brand">
                     <tr>
                         <td>${brand.brandName}</td>
+                        <form action="delete_brand_action.jsp">
+                            <input type="hidden" name="brandId" value="${brand.brandId}"/>
+                            <td><input type="submit" value="Delete" /></td>
+                        </form>
                     </tr>
+                    
                 </c:forEach>
             </tbody>
         </table>

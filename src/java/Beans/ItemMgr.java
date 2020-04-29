@@ -32,11 +32,11 @@ public class ItemMgr {
     public void retrieveItems() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
-            crs.setCommand("SELECT * FROM ITEM");
+            crs.setCommand("SELECT * FROM ITEM i, brands b where i.brand = b.brand_id");
             crs.execute();
             while (crs.next()) {
                 itemList.add(new Item(crs.getInt("item_id"),crs.getString("name"),
-                crs.getFloat("price"),new Brand(crs.getInt("brand"))));
+                crs.getFloat("price"),new Brand(crs.getInt("brand"),crs.getString("brand_name"))));
             }
         } catch (SQLException ex) {
             Logger.getLogger(ItemMgr.class.getName()).log(Level.SEVERE, null, ex);
