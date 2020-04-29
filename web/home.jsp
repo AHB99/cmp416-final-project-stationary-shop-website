@@ -33,7 +33,7 @@
             </form>
         </fieldset>
         <fieldset>
-            <legend>View Data</legend>
+            <legend>View/Update/Delete Data</legend>
             <form action="view_entity_action.jsp">
                 <select name="entity_choice">
                     <option value="department">Department</option>

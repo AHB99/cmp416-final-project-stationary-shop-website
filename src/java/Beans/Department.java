@@ -75,6 +75,20 @@ public class Department {
         return false;
     }
     
+    public boolean updateDepartment() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("update department set department_name = ? where department_id = ?");
+            crs.setString(1, departmentName);
+            crs.setInt(2, departmentId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Department.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     /**
      * Updates fields from db
      * Preconditions: Assumes departmentId set
