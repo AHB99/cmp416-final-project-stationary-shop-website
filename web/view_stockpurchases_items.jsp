@@ -27,6 +27,7 @@
                     <th>Brand</th>
                     <th>Supplier Price</th>
                     <th>Quantity</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +39,12 @@
                     <td>${stockPurchaseItem.suppliedItem.item.itemBrand.brandName}</td>
                     <td>${stockPurchaseItem.suppliedItem.supplierPrice}</td>
                     <td>${stockPurchaseItem.quantity}</td>
+                    <form action="delete_stockpurchases_item_action.jsp">
+                        <input type="hidden" name="purchaseId" value="${selectedStockPurchase.purchaseId}"/>
+                        <input type="hidden" name="supplierId" value="${stockPurchaseItem.suppliedItem.supplier.supplierId}"/>
+                        <input type="hidden" name="itemId" value="${stockPurchaseItem.suppliedItem.item.itemId}"/>
+                        <td><input type="submit" value="Delete" /></td>
+                    </form>
                 </tr>
             </c:forEach>
         </tbody>
