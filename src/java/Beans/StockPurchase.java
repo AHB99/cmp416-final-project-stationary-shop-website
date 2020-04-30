@@ -118,6 +118,22 @@ public class StockPurchase {
         }
     }
     
+    public boolean deleteStockPurchase() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("delete from stock_purchase_items where purchase_id = ?");
+            crs.setInt(1, purchaseId);
+            crs.execute();
+            crs.setCommand("delete from stock_purchase where purchase_id = ?");
+            crs.setInt(1, purchaseId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(StockPurchase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     
     private Integer purchaseId;
     private ShopBranch shopBranch;

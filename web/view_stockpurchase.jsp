@@ -28,6 +28,9 @@
                     <th>
                         View Purchased Items
                     </th>
+                    <th>
+                        Delete
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +41,10 @@
                     <form action="view_stockpurchases_items.jsp">
                         <input type="hidden" name="purchaseId" value="${stockPurchase.purchaseId}"/>
                         <td><input type="submit" value="View Purchased Items" /></td>
+                    </form>
+                    <form action="delete_stockpurchase_action.jsp">
+                        <input type="hidden" name="purchaseId" value="${stockPurchase.purchaseId}"/>
+                        <td><input type="submit" value="Delete" /></td>
                     </form>
                 </tr>
         </c:forEach>
