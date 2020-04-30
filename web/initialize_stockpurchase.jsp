@@ -19,7 +19,7 @@
                 <jsp:setProperty name="currentStockPurchaseShop" property="shopId" param="shopId" />
             </jsp:useBean>
             <c:set target="${currentStockPurchase}" property="shopBranch" value="${currentStockPurchaseShop}" />
-            ${currentStockPurchase.setPurchaseDate(param.purchaseDate)}
+            ${currentStockPurchase.parsePurchaseDate(param.purchaseDate)}
         </jsp:useBean>
         <jsp:forward page="select_stockpurchase_supplier.jsp" />
     </body>

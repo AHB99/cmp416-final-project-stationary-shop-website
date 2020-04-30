@@ -18,6 +18,20 @@ import javax.sql.rowset.CachedRowSet;
  */
 public class StockPurchase {
 
+    public Integer getPurchaseId() {
+        return purchaseId;
+    }
+
+    public void setPurchaseId(Integer purchaseId) {
+        this.purchaseId = purchaseId;
+    }
+
+    public StockPurchase(Integer purchaseId, ShopBranch shopBranch, LocalDate purchaseDate) {
+        this.purchaseId = purchaseId;
+        this.shopBranch = shopBranch;
+        this.purchaseDate = purchaseDate;
+    }
+
     @Override
     public String toString() {
         return "StockPurchase{" + "shopBranch=" + shopBranch + ", purchaseDate=" + purchaseDate + ", stockPurchaseItemMgr=" + stockPurchaseItemMgr + '}';
@@ -31,11 +45,6 @@ public class StockPurchase {
         this.stockPurchaseItemMgr = stockPurchaseItemMgr;
     }
 
-    public StockPurchase(ShopBranch shopBranch, LocalDate purchaseDate, StockPurchaseItemMgr stockPurchaseItemMgr) {
-        this.shopBranch = shopBranch;
-        this.purchaseDate = purchaseDate;
-        this.stockPurchaseItemMgr = stockPurchaseItemMgr;
-    }
 
     public ShopBranch getShopBranch() {
         return shopBranch;
@@ -53,7 +62,7 @@ public class StockPurchase {
         this.purchaseDate = purchaseDate;
     }
     
-    public void setPurchaseDate(String purchaseDateString) {
+    public void parsePurchaseDate(String purchaseDateString) {
         this.purchaseDate = LocalDate.parse(purchaseDateString);
     }
 
@@ -89,7 +98,28 @@ public class StockPurchase {
         }
         return false;
     }
-
+    
+    public void retrieveStockPurchase() {
+        if (purchaseId == null) {
+            return;
+        }
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from stock_purchase_items spi, supplies ss, supplier s, item i, brands b where spi.supplier_id = ss.supplier_id and ss.supplier_id = s.supplier_id and ss.item_id = spi.item_id and ss.item_id = i.item_id and i.brand = b.brand_id and spi.purchase_id = ?");
+            crs.setInt(1, purchaseId);
+            crs.execute();
+            while (crs.next()){
+                stockPurchaseItemMgr.addStockPurchaseItem(
+                new StockPurchaseItem(new SuppliedItem(new Supplier(crs.getInt("supplier_id"),crs.getString("supplier_name"), crs.getString("supplier_telephone"), crs.getString("supplier_emailid")),
+                new Item(crs.getInt("item_Id"), crs.getString("name"),crs.getFloat("price"),new Brand(crs.getInt("brand_id"), crs.getString("brand_name"))),crs.getFloat("supplier_price")), crs.getInt("quantity")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StockPurchase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    private Integer purchaseId;
     private ShopBranch shopBranch;
     private LocalDate purchaseDate;
     private StockPurchaseItemMgr stockPurchaseItemMgr = new StockPurchaseItemMgr();

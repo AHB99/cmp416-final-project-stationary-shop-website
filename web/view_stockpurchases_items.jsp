@@ -1,10 +1,10 @@
 <%-- 
-    Document   : review_stockpurchase
-    Created on : Apr 30, 2020, 8:55:12 PM
+    Document   : view_stockpurchases_items
+    Created on : May 1, 2020, 12:22:12 AM
     Author     : azada
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,8 +13,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:useBean id="currentStockPurchase" class="Beans.StockPurchase" scope="session"/>
-        <h1>Review Stock Purchase</h1>
+        <jsp:useBean id="selectedStockPurchase" class="Beans.StockPurchase">
+            <jsp:setProperty name="selectedStockPurchase" property="*" />
+        </jsp:useBean>
+        ${selectedStockPurchase.retrieveStockPurchase()}
+        <h1>Selected Stock Purchase Items</h1>
         <table border="1">
             <thead>
                 <tr>
@@ -27,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-            <c:forEach items="${currentStockPurchase.stockPurchaseItemMgr.stPurItemList}" var="stockPurchaseItem">
+            <c:forEach items="${selectedStockPurchase.stockPurchaseItemMgr.stPurItemList}" var="stockPurchaseItem">
                 <tr>
                     <td>${stockPurchaseItem.suppliedItem.supplier.supplierName}</td>
                     <td>${stockPurchaseItem.suppliedItem.item.itemName}</td>
@@ -39,11 +42,7 @@
             </c:forEach>
         </tbody>
     </table>
-    <form action="insert_stockpurchase_action.jsp">
-        <td><input type="submit" value="Confirm Stock Purchase" /></td>
-    </form>
-        <form action="select_stockpurchase_supplier.jsp">
-        <td><input type="submit" value="Add More Items" /></td>
-    </form>
-    </body>
+    <form action="home.jsp" method="POST"><input type="submit" value="Back to Main Menu" /></form> 
+
+</body>
 </html>

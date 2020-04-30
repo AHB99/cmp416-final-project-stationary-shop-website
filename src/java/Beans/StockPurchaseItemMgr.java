@@ -5,7 +5,11 @@
  */
 package Beans;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sql.rowset.CachedRowSet;
 
 /**
  *
@@ -32,6 +36,7 @@ public class StockPurchaseItemMgr {
     public void addStockPurchaseItem(StockPurchaseItem stockPurchaseItem){
         stPurItemList.add(stockPurchaseItem);
     }
+    
     
     private ArrayList<StockPurchaseItem> stPurItemList = new ArrayList<>();
 }
