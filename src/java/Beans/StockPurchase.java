@@ -5,8 +5,12 @@
  */
 package Beans;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sql.rowset.CachedRowSet;
 
 /**
  *
@@ -58,6 +62,32 @@ public class StockPurchase {
     
     public void addStockPurchaseItem(StockPurchaseItem stockPurchaseItem){
         stockPurchaseItemMgr.addStockPurchaseItem(stockPurchaseItem);
+    }
+    
+    public boolean insertStockPurchase() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("INSERT INTO stock_purchase (shop_id, date_of_purchase) VALUES (?,?)");
+            crs.setInt(1, shopBranch.getShopId());
+            crs.setDate(2, java.sql.Date.valueOf(purchaseDate));
+            crs.execute();
+            crs.setCommand("select max(purchase_id) as curr_purchase_id from stock_purchase");
+            crs.execute();
+            crs.next();
+            int currPurchaseId = crs.getInt("curr_purchase_id");
+            for (StockPurchaseItem spi : stockPurchaseItemMgr.getStPurItemList()){
+                crs.setCommand("insert into stock_purchase_items (purchase_id, supplier_id, item_id, quantity) values(?,?,?,?)");
+                crs.setInt(1, currPurchaseId);
+                crs.setInt(2, spi.getSuppliedItem().getSupplier().getSupplierId());
+                crs.setInt(3, spi.getSuppliedItem().getItem().getItemId());
+                crs.setInt(4, spi.getQuantity());
+                crs.execute();
+            }
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(StockPurchase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     private ShopBranch shopBranch;

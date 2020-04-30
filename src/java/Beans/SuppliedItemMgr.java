@@ -47,11 +47,12 @@ public class SuppliedItemMgr {
     public void retrieveSuppliedItemsBySupplier(int supplierId) {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
-            crs.setCommand("select * from supplies s, item i, brands b where supplier_id = ? and s.item_id = i.item_id and i.brand = b.brand_id");
+            crs.setCommand("select * from supplier s, supplies ss, item i, brands b where ss.supplier_id = ? and s.supplier_id = ss.supplier_id and ss.item_id = i.item_id and i.brand = b.brand_id");
             crs.setInt(1,supplierId);
             crs.execute();
+            suppliedItemList.clear();
             while (crs.next()) {
-                suppliedItemList.add(new SuppliedItem(new Supplier(crs.getInt("supplier_id")),
+                suppliedItemList.add(new SuppliedItem(new Supplier(crs.getInt("supplier_id"), crs.getString("supplier_name"), crs.getString("supplier_telephone"), crs.getString("supplier_emailid")),
                         new Item(crs.getInt("item_id"),crs.getString("name"),crs.getFloat("price"),
                         new Brand(crs.getInt("brand_id"), crs.getString("brand_name"))),
                         crs.getFloat("supplier_price")));

@@ -43,5 +43,8 @@
     <form action="insert_stockpurchase_action.jsp">
         <td><input type="submit" value="Confirm Stock Purchase" /></td>
     </form>
+        <form action="select_stockpurchase_supplier.jsp">
+        <td><input type="submit" value="Add More Items" /></td>
+    </form>
     </body>
 </html>

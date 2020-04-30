@@ -17,5 +17,16 @@
         <%
             System.out.println("Adding this stock purchase: " + currentStockPurchase);
         %>
+
+        <c:choose >
+            <c:when test="${currentStockPurchase.insertStockPurchase()}">
+                <c:set var="success_msg" value="Successfully inserted stock purchase!" scope="request" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="error_msg" value="Error inserting stock purchase!" scope="request" />
+            </c:otherwise>
+        </c:choose>
+        <c:remove var="currentStockPurchase" scope="session" />
+        <jsp:forward page="action_outcome.jsp" />
     </body>
 </html>
