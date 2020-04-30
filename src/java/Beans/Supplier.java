@@ -16,6 +16,11 @@ import javax.sql.rowset.CachedRowSet;
  */
 public class Supplier {
 
+    @Override
+    public String toString() {
+        return "Supplier{" + "supplierId=" + supplierId + ", supplierName=" + supplierName + ", telephone=" + telephone + ", email=" + email + '}';
+    }
+
     public Supplier(Integer supplierId) {
         this.supplierId = supplierId;
     }

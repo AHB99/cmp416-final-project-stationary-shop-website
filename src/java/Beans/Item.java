@@ -16,6 +16,11 @@ import javax.sql.rowset.CachedRowSet;
  */
 public class Item {
 
+    @Override
+    public String toString() {
+        return "Item{" + "itemId=" + itemId + ", itemName=" + itemName + ", itemPrice=" + itemPrice + ", itemBrand=" + itemBrand + '}';
+    }
+
     public Item(Integer itemId) {
         this.itemId = itemId;
     }
