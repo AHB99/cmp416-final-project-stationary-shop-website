@@ -43,6 +43,38 @@ public class ItemMgr {
         }
     }
     
+    public void retrieveItemsByNamePartialPhrase(String namePartialPhrase) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM ITEM i, brands b where i.brand = b.brand_id and lower(i.name) LIKE '%"+namePartialPhrase.toLowerCase()+"%'");
+            crs.execute();
+            while (crs.next()) {
+                itemList.add(new Item(crs.getInt("item_id"), crs.getString("name"),
+                        crs.getFloat("price"), new Brand(crs.getInt("brand"), crs.getString("brand_name"))));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemMgr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void retrieveItemsByPriceRange(float lower, float upper) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM ITEM i, brands b where i.brand = b.brand_id and i.price between ? and ?");
+            crs.setFloat(1, lower);
+            crs.setFloat(2, upper);
+
+            crs.execute();
+            while (crs.next()) {
+                itemList.add(new Item(crs.getInt("item_id"), crs.getString("name"),
+                        crs.getFloat("price"), new Brand(crs.getInt("brand"), crs.getString("brand_name"))));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemMgr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     public void retrieveItemsByShopSold(int shopId) {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
