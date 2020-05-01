@@ -7,6 +7,7 @@ package Beans;
 
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.rowset.CachedRowSet;
@@ -219,7 +220,7 @@ public class Employee {
         }
         return false;
     }
-
+    
     private Integer employeeId;
     private String firstName;
     private String lastName;

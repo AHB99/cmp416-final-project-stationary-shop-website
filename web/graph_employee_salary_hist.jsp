@@ -11,13 +11,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="jquery_lib/jquery-3.5.0.min.js"></script>
         <script type="text/javascript">
             google.charts.load("current", {packages: ["corechart"]});
             google.charts.setOnLoadCallback(getDataFromDb);
-            
-            function getDataFromDb(){
-                //TODO: Add jQuery library
-                //TODO: Add $.post() with below callback
+
+            function getDataFromDb() {
+                $.post("GetEmployeeSalaryHistData", dbRetrievalCallback);
             }
 
             function dbRetrievalCallback(fetched) {
@@ -26,10 +26,14 @@
             }
 
             function drawChart(retrievedData) {
-                var data = google.visualization.arrayToDataTable(retrievedData);
-
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Employee Name');
+                data.addColumn('number', 'Salary');
+                data.addRows(retrievedData);
                 var options = {
-                    title: 'Employee Salary Histogram',
+                    legend: { position: 'none' },
+                    hAxis: {title: 'Salary'},
+                    vAxis: {title: 'Count'},
                     width: 900,
                     height: 500
                 };
