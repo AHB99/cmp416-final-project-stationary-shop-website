@@ -87,6 +87,23 @@ public class ShopSale {
         }
         return false;
     }
+    
+    public void retrieveShopSale() {
+        if (saleId == null) {
+            return;
+        }
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from shop_sale_items ssi, item i, brands b where ssi.item_id = i.item_id and i.brand = b.brand_id and ssi.sale_id = ?");
+            crs.setInt(1, saleId);
+            crs.execute();
+            while (crs.next()) {
+                shopSaleItems.addShopSaleItem(new ShopSaleItem(saleId, new Item(crs.getInt("item_Id"), crs.getString("name"), crs.getFloat("price"), new Brand(crs.getInt("brand_id"), crs.getString("brand_name"))),crs.getInt("quantity")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopSale.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private Integer saleId;
     private ShopBranch shopBranch;
