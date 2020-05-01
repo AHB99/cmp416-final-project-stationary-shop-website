@@ -16,8 +16,8 @@
         <form action="update_stockpurchase_action.jsp">
             <fieldset>
                 <legend>Enter Details</legend>
-                <label for="shop_id">Shop Branch of Stock Purchase: </label>
-                <input type="text" name="" value="${param.location}" disabled />
+                <label for="location">Shop Branch of Stock Purchase: </label>
+                <input type="text" id="location" name="" value="${param.location}" disabled />
                 <br/>
                 <label for="purchase_date">Date: </label>
                 <input type="date" id="purchase_date" name="purchaseDate" value="${param.purchaseDate}" />

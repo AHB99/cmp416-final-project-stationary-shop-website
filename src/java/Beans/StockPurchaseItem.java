@@ -77,7 +77,48 @@ public class StockPurchaseItem {
         return false;
     }
     
-    private int purchaseId;
+    public void retrieveStockPurchaseItem() {
+        if (purchaseId == null || suppliedItem.getSupplier().getSupplierId() == null || suppliedItem.getItem().getItemId() == null) {
+            return;
+        }
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM stock_purchase_items where purchase_id = ? and supplier_id = ? and item_id = ?");
+            crs.setInt(1, purchaseId);
+            crs.setInt(2, suppliedItem.getSupplier().getSupplierId());
+            crs.setInt(3, suppliedItem.getItem().getItemId());
+            crs.execute();
+            if (crs.next()) {
+                quantity = crs.getInt("quantity");
+            }
+            suppliedItem.retrieveSuppliedItem();
+        } catch (SQLException ex) {
+            Logger.getLogger(StockPurchaseItem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public boolean updateStockPurchaseItem() {
+        try {
+            if (quantity <= 0){
+                deleteStockPurchaseItem();
+            }
+            else{
+                CachedRowSet crs = DbCredentials.getConfiguredConnection();
+                crs.setCommand("update stock_purchase_items set quantity = ? where purchase_id = ? and supplier_id = ? and item_id = ?");
+                crs.setInt(1, quantity);
+                crs.setInt(2, purchaseId);
+                crs.setInt(3, suppliedItem.getSupplier().getSupplierId());
+                crs.setInt(4, suppliedItem.getItem().getItemId());
+                crs.execute();
+            }
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(StockPurchaseItem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    private Integer purchaseId;
     private SuppliedItem suppliedItem;
     private int quantity;
 }
