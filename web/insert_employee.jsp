@@ -52,6 +52,7 @@
                 </select><br/>
                 <label for="supervisorId">Supervisor: </label>
                 <select id="supervisorId" name="supervisorId">
+                    <option value="">None</option>
                     <c:forEach items="${employeeMgr.employeeList}" var="employee">
                         <option value="${employee.employeeId}">${employee.firstName} ${employee.lastName}</option>
                     </c:forEach>        

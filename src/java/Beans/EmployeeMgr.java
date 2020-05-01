@@ -40,6 +40,7 @@ public class EmployeeMgr {
                 new ShopBranch(crs.getInt("shop_id")),
                 new Employee(crs.getInt("supervisor_id"))));              
             }
+            System.out.println("emps: " + employeeList);
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeMgr.class.getName()).log(Level.SEVERE, null, ex);
         }

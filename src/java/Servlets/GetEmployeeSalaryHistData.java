@@ -51,7 +51,6 @@ public class GetEmployeeSalaryHistData extends HttpServlet {
                 salaryStrings.add("[\"" + emp.getFirstName() + " " + emp.getLastName() + "\", " + emp.getSalary() + "]");
             }
             String salaryList = "[" + String.join(",", salaryStrings) + "]";
-            System.out.println("Sending: "+salaryList);
             out.println(salaryList);
         }
     }

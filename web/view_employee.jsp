@@ -18,7 +18,7 @@
         ${departmentMgr.retrieveDepartments()}
         <jsp:useBean id="shopBranchMgr" class="Beans.ShopBranchMgr" />
         ${shopBranchMgr.retrieveShopBranches()}
-        
+
         <fieldset>
             <legend>Filter By:</legend>
             <form action="view_employee.jsp">
@@ -58,7 +58,7 @@
                 ${employeeMgr.retrieveEmployees()}
             </c:otherwise>
         </c:choose>
-        
+
         <table border="1">
             <thead>
                 <tr>
@@ -90,7 +90,15 @@
                 </form>
                 <form action="view_single_employee.jsp">
                     <input type="hidden" name="employeeId" value="${employee.supervisor.employeeId}"/>
-                    <td><input type="submit" value="View Supervisor Info" /></td>
+                    <c:choose>
+                        <c:when test="${employee.supervisor.employeeId != 0}">
+                            <td><input type="submit" value="View Supervisor Info" /></td>
+                            </c:when>
+                            <c:otherwise>
+                            <td><input type="button" value="View Supervisor Info" disabled /></td>
+                            </c:otherwise>
+                        </c:choose>
+
                 </form>
                 <form action="delete_employee_action.jsp">
                     <input type="hidden" name="employeeId" value="${employee.employeeId}"/>

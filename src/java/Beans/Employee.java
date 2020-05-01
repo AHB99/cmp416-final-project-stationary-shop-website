@@ -165,7 +165,13 @@ public class Employee {
                 address = crs.getString("address");
                 department = new Department(crs.getInt("department_id"), crs.getString("department_name"));
                 shopBranch = new ShopBranch(crs.getInt("shop_id"));
-                supervisor = new Employee(crs.getInt("supervisor_id"));
+                Integer supervisorId = crs.getInt("supervisor_id");
+                if (supervisorId != null){
+                    supervisor = new Employee();
+                }
+                else{
+                    supervisor = null;
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);

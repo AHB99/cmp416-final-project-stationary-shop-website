@@ -50,7 +50,6 @@ public class GetMonthlyProfitGraphData extends HttpServlet {
                 profitStrings.add("[\"" + monthlyProfit.getDateOfAccount().format(DateTimeFormatter.ofPattern("YYYY-MMM")) + "\", " + monthlyProfit.getAccountValue() + "]");
             }
             String profitList = "[" + String.join(",", profitStrings) + "]";
-            System.out.println("Sending: " + profitList);
             out.println(profitList);
         }
     }

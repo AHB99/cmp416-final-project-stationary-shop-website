@@ -63,6 +63,8 @@ public class MonthlyRevenueExpense {
                 maxDate = crs.getDate("max_date").toLocalDate();
             }
 
+
+
             //These are ordered ascendingly, with day of month = 1
             ArrayList<MonthlyRevenueExpense> monthlyRevenue = getPaddedRevExpInRange(minDate, maxDate, getMonthlyRevenue());
             ArrayList<MonthlyRevenueExpense> monthlyExpense = getPaddedRevExpInRange(minDate, maxDate, getMonthlyExpense());
@@ -122,9 +124,11 @@ public class MonthlyRevenueExpense {
      * @return 
      */
     private static ArrayList<MonthlyRevenueExpense> getPaddedRevExpInRange(LocalDate start, LocalDate end, ArrayList<MonthlyRevenueExpense> monthlyRevExp){
+        System.out.println("pulled: " + monthlyRevExp);
         ArrayList<MonthlyRevenueExpense> result = new ArrayList<>();
 
-        int monthsBetween = Period.between(start, end).getMonths() + 1;
+        long monthsBetween = Period.between(start, end).toTotalMonths() + 1;
+
         LocalDate iterDate = LocalDate.of(start.getYear(), start.getMonth(), 1);
         
         int revExpIter = 0;
