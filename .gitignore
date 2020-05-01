@@ -27,3 +27,6 @@ hs_err_pid*
 build/
 nbbuild/
 /dist/
+
+# jquery
+jquery_lib/

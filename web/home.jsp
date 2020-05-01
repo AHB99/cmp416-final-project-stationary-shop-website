@@ -51,5 +51,14 @@
                 <input type="submit" value="View" />
             </form>            
         </fieldset>
+        <fieldset>
+            <legend>View Graphs: </legend>
+            <form action="graph_menu_action.jsp">
+                <select name="graph_choice">
+                    <option value="employee_salary_hist">Employee Salary Histogram</option>
+                </select>
+                <input type="submit" value="Graph" />
+            </form>            
+        </fieldset>
     </body>
 </html>
