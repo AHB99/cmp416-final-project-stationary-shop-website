@@ -134,6 +134,20 @@ public class StockPurchase {
         return false;
     }
     
+    public boolean updateStockPurchase() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("update stock_purchase set date_of_purchase = ? where purchase_id = ?");
+            crs.setDate(1, java.sql.Date.valueOf(purchaseDate));
+            crs.setInt(2, purchaseId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(StockPurchase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     
     private Integer purchaseId;
     private ShopBranch shopBranch;
