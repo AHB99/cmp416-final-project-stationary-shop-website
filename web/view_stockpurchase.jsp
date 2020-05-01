@@ -26,7 +26,7 @@
                         Purchase Date
                     </th>
                     <th>
-                        View Purchased Items
+                        Purchased Items
                     </th>
                     <th>
                         Delete

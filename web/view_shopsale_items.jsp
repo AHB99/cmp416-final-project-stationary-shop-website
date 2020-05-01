@@ -37,17 +37,14 @@
                         <td>${shopSaleItem.item.itemPrice}</td>
                         <td>${shopSaleItem.item.itemBrand.brandName}</td>
                         <td>${shopSaleItem.quantity}</td>
-                <form action="delete_stockpurchases_item_action.jsp">
-                    <input type="hidden" name="purchaseId" value="${selectedStockPurchase.purchaseId}"/>
-                    <input type="hidden" name="supplierId" value="${stockPurchaseItem.suppliedItem.supplier.supplierId}"/>
-                    <input type="hidden" name="itemId" value="${stockPurchaseItem.suppliedItem.item.itemId}"/>
+                <form action="delete_shopsale_item_action.jsp">
+                    <input type="hidden" name="saleId" value="${selectedShopSale.saleId}"/>
+                    <input type="hidden" name="itemId" value="${shopSaleItem.item.itemId}"/>
                     <td><input type="submit" value="Delete" /></td>
                 </form>
-                <form action="update_stockpurchases_item.jsp">
-                    <input type="hidden" name="purchaseId" value="${selectedStockPurchase.purchaseId}"/>
-                    <input type="hidden" name="supplierId" value="${stockPurchaseItem.suppliedItem.supplier.supplierId}"/>
-                    <input type="hidden" name="itemId" value="${stockPurchaseItem.suppliedItem.item.itemId}"/>
-
+                <form action="update_shopsale_item.jsp">
+                    <input type="hidden" name="saleId" value="${selectedShopSale.saleId}"/>
+                    <input type="hidden" name="itemId" value="${shopSaleItem.item.itemId}"/>
                     <td><input type="submit" value="Update" /></td>
                 </form>
             </tr>

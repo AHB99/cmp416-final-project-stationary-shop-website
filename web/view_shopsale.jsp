@@ -27,7 +27,7 @@
                         Sale Date
                     </th>
                     <th>
-                        View Sold Items
+                        Sold Items
                     </th>
                     <th>
                         Delete
