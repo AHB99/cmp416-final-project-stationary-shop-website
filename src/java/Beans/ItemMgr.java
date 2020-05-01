@@ -57,6 +57,10 @@ public class ItemMgr {
         } 
     }
     
+    public void addItem(Item item){
+        itemList.add(item);
+    }
+    
     private ArrayList<Item> itemList= new ArrayList<>();
     
 }

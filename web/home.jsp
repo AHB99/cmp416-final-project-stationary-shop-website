@@ -26,6 +26,7 @@
                     <option value="item">Item</option>
                     <option value="supplier">Supplier</option>
                     <option value="stock_purchase">Stock Purchase</option>
+                    <option value="shop_sale">Shop Sale</option>
                     <option value="supplied_item">Item for Supplier</option>
                     <option value="seller_item">Items for Shop</option>
 
