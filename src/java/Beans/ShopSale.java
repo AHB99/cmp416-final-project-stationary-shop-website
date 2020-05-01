@@ -104,6 +104,36 @@ public class ShopSale {
             Logger.getLogger(ShopSale.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public boolean deleteShopSale() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("delete from shop_sale_items where sale_id = ?");
+            crs.setInt(1, saleId);
+            crs.execute();
+            crs.setCommand("delete from shop_sale where sale_id = ?");
+            crs.setInt(1, saleId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopSale.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public boolean updateShopSale() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("update shop_sale set date_of_sale = ? where sale_id = ?");
+            crs.setDate(1, java.sql.Date.valueOf(saleDate));
+            crs.setInt(2, saleId);
+            crs.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopSale.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     private Integer saleId;
     private ShopBranch shopBranch;

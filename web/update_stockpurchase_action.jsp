@@ -25,7 +25,6 @@
                 <c:set var="error_msg" value="Error updating stock purchase!" scope="request" />
             </c:otherwise>
         </c:choose>
-        <c:remove var="currentStockPurchase" scope="session" />
         <jsp:forward page="action_outcome.jsp" />
     </body>
 </html>

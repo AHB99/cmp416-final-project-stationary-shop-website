@@ -46,14 +46,14 @@
                     <input type="hidden" name="saleId" value="${shopSale.saleId}"/>
                     <td><input type="submit" value="View Sold Items" /></td>
                 </form>
-                <form action="delete_stockpurchase_action.jsp">
-                    <input type="hidden" name="purchaseId" value="${stockPurchase.purchaseId}"/>
+                <form action="delete_shopsale_action.jsp">
+                    <input type="hidden" name="saleId" value="${shopSale.saleId}"/>
                     <td><input type="submit" value="Delete" /></td>
                 </form>
-                <form action="update_stockpurchase.jsp">
-                    <input type="hidden" name="location" value="${stockPurchase.shopBranch.location}"/>
-                    <input type="hidden" name="purchaseDate" value="${stockPurchase.purchaseDate}"/>
-                    <input type="hidden" name="purchaseId" value="${stockPurchase.purchaseId}"/>
+                <form action="update_shopsale.jsp">
+                    <input type="hidden" name="location" value="${shopSale.shopBranch.location}"/>
+                    <input type="hidden" name="saleDate" value="${shopSale.saleDate}"/>
+                    <input type="hidden" name="saleId" value="${shopSale.saleId}"/>
                     <td><input type="submit" value="Update" /></td>
                 </form>
                 </tr>
