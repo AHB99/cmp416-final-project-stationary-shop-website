@@ -4,6 +4,7 @@
     Author     : azada
 --%>
 
+<%@page import="Beans.MonthlyRevenueExpense"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -56,6 +57,8 @@
             <form action="graph_menu_action.jsp">
                 <select name="graph_choice">
                     <option value="employee_salary_hist">Employee Salary Histogram</option>
+                    <option value="monthly_profit_line">Monthly Profit Graph</option>
+
                 </select>
                 <input type="submit" value="Graph" />
             </form>            

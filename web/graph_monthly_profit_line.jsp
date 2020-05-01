@@ -1,6 +1,6 @@
 <%-- 
-    Document   : graph_employee_salary_hist
-    Created on : May 1, 2020, 8:27:01 PM
+    Document   : graph_monthly_profit_line
+    Created on : May 2, 2020, 1:09:09 AM
     Author     : azada
 --%>
 
@@ -13,11 +13,11 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript" src="jquery_lib/jquery-3.5.0.min.js"></script>
         <script type="text/javascript">
-            google.charts.load("current", {packages: ["corechart"]});
+            google.charts.load('current', {'packages': ['line']});
             google.charts.setOnLoadCallback(getDataFromDb);
 
             function getDataFromDb() {
-                $.post("GetEmployeeSalaryHistData", dbRetrievalCallback);
+                $.post("GetMonthlyProfitGraphData", dbRetrievalCallback);
             }
 
             function dbRetrievalCallback(fetched) {
@@ -26,28 +26,33 @@
             }
 
             function drawChart(retrievedData) {
+
                 var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Employee Name');
-                data.addColumn('number', 'Salary');
+                data.addColumn('string', 'Month');
+                data.addColumn('number', 'Profit');
+
                 data.addRows(retrievedData);
+
                 var options = {
-                    legend: { position: 'none' },
-                    hAxis: {title: 'Salary'},
-                    vAxis: {title: 'Count'},
+                    chart: {
+                        title: 'Monthly Profit',
+                    },
                     width: 900,
                     height: 500
                 };
 
-                var chart = new google.visualization.Histogram(document.getElementById('employee_salary_hist'));
-                chart.draw(data, options);
+                var chart = new google.charts.Line(document.getElementById('monthly_profit_line'));
+
+                chart.draw(data, google.charts.Line.convertOptions(options));
             }
         </script>
     </head>
     <body>
-        <h1>Employee Salary Histogram</h1>
+        <h1>Monthly Profit Line Graph</h1>
         <br/>
-        <div id="employee_salary_hist" style="width: 900px; height: 500px"></div>
+        <div id="monthly_profit_line" style="width: 900px; height: 500px"></div>
         <br/>
         <form action="home.jsp" method="POST"><input type="submit" value="Back to Main Menu" /></form> 
+
     </body>
 </html>

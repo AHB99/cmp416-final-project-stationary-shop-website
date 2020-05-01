@@ -17,6 +17,9 @@
         <c:when test="${param.graph_choice == 'employee_salary_hist'}">
             <jsp:forward page="graph_employee_salary_hist.jsp" />
         </c:when>
+        <c:when test="${param.graph_choice == 'monthly_profit_line'}">
+            <jsp:forward page="graph_monthly_profit_line.jsp" />
+        </c:when>
     </c:choose>
 </body>
 </html>
