@@ -51,6 +51,10 @@
         </c:forEach>
     </tbody>
 </table>
+<form action="insert_single_shopsale_item.jsp">
+    <input type="hidden" name="saleId" value="${selectedShopSale.saleId}"/>
+    <td><input type="submit" value="Add Item" /></td>
+</form>
 <form action="home.jsp" method="POST"><input type="submit" value="Back to Main Menu" /></form> 
 </body>
 </html>

@@ -45,14 +45,13 @@ public class ShopSaleItem {
         this.item = item;
         this.quantity = quantity;
     }
-    
+
     public boolean deleteShopSaleItem() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
             crs.setCommand("delete from shop_sale_items where sale_id = ? and item_id = ?");
             crs.setInt(1, saleId);
             crs.setInt(2, item.getItemId());
-
             crs.execute();
 
             return true;
@@ -61,7 +60,7 @@ public class ShopSaleItem {
         }
         return false;
     }
-    
+
     public void retrieveShopSaleItem() {
         if (saleId == null || item.getItemId() == null) {
             return;
@@ -80,7 +79,7 @@ public class ShopSaleItem {
             Logger.getLogger(ShopSaleItem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public boolean updateShopSaleItem() {
         try {
             if (quantity <= 0) {
@@ -93,6 +92,22 @@ public class ShopSaleItem {
                 crs.setInt(3, item.getItemId());
                 crs.execute();
             }
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopSaleItem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public boolean insertShopSaleItem() {
+        try {
+
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("insert into shop_sale_items (sale_id, item_id, quantity) values (?,?,?)");
+            crs.setInt(1, saleId);
+            crs.setInt(2, item.getItemId());
+            crs.setInt(3, quantity);
+            crs.execute();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(ShopSaleItem.class.getName()).log(Level.SEVERE, null, ex);

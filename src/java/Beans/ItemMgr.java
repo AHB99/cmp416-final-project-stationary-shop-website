@@ -120,10 +120,26 @@ public class ItemMgr {
     public void retrieveItemsNotInStockPurchaseBySupplier(int purchaseId, int supplierId) {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
-            crs.setCommand("select * from supplies s, item i, brands b where s.supplier_id = ? and s.item_id = i.item_id and i.brand = b.brand_id and i.item_id not in (select item_id from stock_purchase_items where purchase_id = ? and supplier_id = ?)");
+            crs.setCommand("select * from supplies s, item i, brands b where s.supplier_id = ? and s.item_id = i.item_id and i.brand = b.brand_id and i.item_id not in (select item_id from stock_purchase_items where purchase_id = ? and supplier_id = ?) and i.item_id in (select s.item_id from sells s, stock_purchase sp where sp.purchase_id = ? and sp.shop_id = s.shop_id)");
             crs.setInt(1, supplierId);
             crs.setInt(2, purchaseId);
             crs.setInt(3, supplierId);
+            crs.setInt(4, purchaseId);
+            crs.execute();
+            while (crs.next()) {
+                itemList.add(new Item(crs.getInt("item_id"), crs.getString("name"), crs.getFloat("price"), new Brand(crs.getInt("brand_id"), crs.getString("brand_name"))));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemMgr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void retrieveItemsNotInShopSale(int saleId) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from item i, brands b where i.brand = b.brand_id and i.item_id not in (select item_id from shop_sale_items where sale_id = ?) and i.item_id in (select s.item_id from sells s, shop_sale ss where ss.shop_id = s.shop_id and ss.sale_id = ?)");
+            crs.setInt(1, saleId);
+            crs.setInt(2, saleId);
             crs.execute();
             while (crs.next()) {
                 itemList.add(new Item(crs.getInt("item_id"), crs.getString("name"), crs.getFloat("price"), new Brand(crs.getInt("brand_id"), crs.getString("brand_name"))));

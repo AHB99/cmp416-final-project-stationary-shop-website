@@ -5,7 +5,11 @@
  */
 package Beans;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sql.rowset.CachedRowSet;
 
 /**
  *
@@ -27,5 +31,7 @@ public class ShopSaleItemMgr {
     public void addShopSaleItem(ShopSaleItem shopSaleItem){
         shopSaleItemList.add(shopSaleItem);
     }
+    
+    
     private ArrayList<ShopSaleItem> shopSaleItemList = new ArrayList<>();
 }

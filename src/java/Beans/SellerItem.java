@@ -6,6 +6,7 @@
 package Beans;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.rowset.CachedRowSet;
@@ -61,8 +62,23 @@ public class SellerItem {
             crs.setCommand("delete from sells where shop_id = ? and item_id = ?");
             crs.setInt(1, shopBranch.getShopId());
             crs.setInt(2, item.getItemId());
-
             crs.execute();
+            
+            ArrayList<Integer> cascadeSaleIds = new ArrayList<>();     
+            crs.setCommand("select sale_id from shop_sale where shop_id = ?");
+            crs.setInt(1, shopBranch.getShopId());
+            crs.execute();
+            while (crs.next()){
+                cascadeSaleIds.add(crs.getInt("sale_id"));
+            }
+            
+            for (Integer saleId : cascadeSaleIds){
+                crs.setCommand("delete from shop_sale_items where item_id = ? and sale_id = ?");
+                crs.setInt(1, item.getItemId());
+                crs.setInt(2, saleId);
+                crs.execute();
+            }
+            
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(SellerItem.class.getName()).log(Level.SEVERE, null, ex);
