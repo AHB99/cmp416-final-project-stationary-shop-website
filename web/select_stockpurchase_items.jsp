@@ -4,6 +4,7 @@
     Author     : azada
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,7 +22,7 @@
 
         <h1>Select Item Quantities Purchased</h1>
         <form action="select_stockpurchase_items_action.jsp">
-            
+
             <table border="1">
                 <thead>
                     <tr>
@@ -40,6 +41,9 @@
                         <th>
                             Quantity Purchased
                         </th>
+                        <th>
+                            Current Stock
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,12 +56,15 @@
                             <td>
                                 <input type="number" name="itemIndex:${vstat.index}" value="0" />
                             </td>
+                            <td>
+                                ${suppliedItem.item.getStockAtShop(currentStockPurchase.shopBranch.shopId)}
+                            </td>
                         </tr>
-                    </c:forEach>
+                </c:forEach>
                 </tbody>
             </table>
             <input type="submit" value="Select Items" />
         </form>
 
-        </body>
+    </body>
 </html>

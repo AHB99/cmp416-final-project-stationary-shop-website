@@ -3,6 +3,7 @@
     Created on : Apr 28, 2020, 11:16:34 PM
     Author     : azada
 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,6 +32,9 @@
                         Brand
                     </th>
                     <th>
+                        Current Stock
+                    </th>
+                    <th>
                         Delete
                     </th>
                 </tr>
@@ -41,6 +45,10 @@
                         <td>${item.itemName}</td>
                         <td>${item.itemPrice}</td>
                         <td>${item.itemBrand.brandName}</td>
+                        <fmt:parseNumber var="shopIdInt" integerOnly="true" type="number" value="${param.shopId}"/> 
+                        <td>
+                            ${item.getStockAtShop(shopIdInt)}
+                        </td>
                         <form action="delete_seller_item_action.jsp">
                             <input type="hidden" name="shopId" value="${param.shopId}"/>
                             <input type="hidden" name="itemId" value="${item.itemId}"/>

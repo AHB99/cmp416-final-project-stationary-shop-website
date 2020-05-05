@@ -116,6 +116,7 @@ public class ShopSaleItem {
     }
 
     public ShopSaleItem() {
+        
     }
     private Integer saleId;
     private Item item;

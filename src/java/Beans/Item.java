@@ -64,11 +64,9 @@ public class Item {
         this.itemPrice = itemPrice;
     }
 
-
-
     public Item() {
     }
-    
+
     public boolean insertItem() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
@@ -84,7 +82,7 @@ public class Item {
         }
         return false;
     }
-    
+
     public boolean deleteItem() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
@@ -94,11 +92,10 @@ public class Item {
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return false;
     }
-    
-    
+
     public void retrieveItem() {
         if (itemId == null) {
             return;
@@ -117,7 +114,7 @@ public class Item {
             Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public boolean updateItem() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
@@ -133,7 +130,32 @@ public class Item {
         }
         return false;
     }
-    
+
+    public int getStockAtShop(int shopId) {
+        String q1 = "select t1.shop_id, t1.item_id, (coalesce(supplied_quantity,0)-coalesce(sold_quantity,0)) as stock from "
+                + "(select shop_id, item_id, sum(quantity) as supplied_quantity from stock_purchase sp, stock_purchase_items spi "
+                + "where sp.PURCHASE_ID = spi.PURCHASE_ID and shop_id = ? and item_id = ? group by shop_id, item_id) as t1 left outer join "
+                + "(select shop_id, item_id, sum(quantity) as sold_quantity from shop_sale ss, shop_sale_items ssi "
+                + "where ss.SALE_ID = ssi.SALE_ID and shop_id = ? and item_id = ?  group by shop_id, item_id) as t2 "
+                + "on t1.shop_id = t2.shop_id and t1.item_id = t2.item_id";
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand(q1);
+            crs.setInt(1, shopId);
+            crs.setInt(2, itemId);
+            crs.setInt(3, shopId);
+            crs.setInt(4, itemId);
+
+            crs.execute();
+            if (crs.next()) {
+                return crs.getInt("stock");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Item.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
     private Integer itemId;
     private String itemName;
     private float itemPrice;

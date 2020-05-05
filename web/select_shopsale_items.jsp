@@ -4,6 +4,8 @@
     Author     : azada
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="Beans.Item"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="Beans.ShopBranch"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -44,6 +46,9 @@
                         <th>
                             Quantity Purchased
                         </th>
+                        <th>
+                            Current Stock
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,6 +59,10 @@
                             <td>${item.itemBrand.brandName}</td>
                             <td>
                                 <input type="number" name="itemIndex:${vstat.index}" value="0" />
+                            </td>
+                            <fmt:parseNumber var="shopIdInt" integerOnly="true" type="number" value="${param.shopId}"/> 
+                            <td>
+                                ${item.getStockAtShop(shopIdInt)}
                             </td>
                         </tr>
                     </c:forEach>
