@@ -4,6 +4,7 @@
     Author     : azada
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="Beans.Item"%>
 <%@page import="Beans.ShopSaleItem"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -20,15 +21,20 @@
         </jsp:useBean>
 
         <%shopSaleItem.setItem(new Item(Integer.parseInt(request.getParameter("itemId"))));%>
+        <fmt:parseNumber var="shopIdInt" integerOnly="true" type="number" value="${param.shopId}"/> 
 
-    <c:choose>
-        <c:when test="${shopSaleItem.insertShopSaleItem()}" >
-            <c:set var="success_msg" value="Successfully added shop sale item!" scope="request" />
-        </c:when>
-        <c:otherwise>
-            <c:set var="error_msg" value="Error adding stock shop sale item!" scope="request" />
-        </c:otherwise>
-    </c:choose>
-    <jsp:forward page="action_outcome.jsp" /> 
+        <c:choose>
+            <c:when test="${shopSaleItem.item.getStockAtShop(shopIdInt) < shopSaleItem.quantity}" >
+                <c:set var="error_msg" value="Error! Out of stock" scope="request" />
+                <jsp:forward page="action_outcome.jsp" /> 
+            </c:when>
+            <c:when test="${shopSaleItem.insertShopSaleItem()}" >
+                <c:set var="success_msg" value="Successfully added shop sale item!" scope="request" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="error_msg" value="Error adding stock shop sale item!" scope="request" />
+            </c:otherwise>
+        </c:choose>
+        <jsp:forward page="action_outcome.jsp" /> 
     </body>
 </html>

@@ -52,7 +52,8 @@
     </tbody>
 </table>
 <form action="insert_single_shopsale_item.jsp">
-    <input type="hidden" name="saleId" value="${selectedShopSale.saleId}"/>
+    <input type="hidden" name="saleId" value="${param.saleId}"/>
+    <input type="hidden" name="shopId" value="${param.shopId}"/>
     <td><input type="submit" value="Add Item" /></td>
 </form>
 <form action="home.jsp" method="POST"><input type="submit" value="Back to Main Menu" /></form> 

@@ -44,6 +44,8 @@
                     <td>${shopSale.saleDate}</td>
                 <form action="view_shopsale_items.jsp">
                     <input type="hidden" name="saleId" value="${shopSale.saleId}"/>
+                    <input type="hidden" name="shopId" value="${shopSale.shopBranch.shopId}"/>
+
                     <td><input type="submit" value="View Sold Items" /></td>
                 </form>
                 <form action="delete_shopsale_action.jsp">
@@ -54,6 +56,7 @@
                     <input type="hidden" name="location" value="${shopSale.shopBranch.location}"/>
                     <input type="hidden" name="saleDate" value="${shopSale.saleDate}"/>
                     <input type="hidden" name="saleId" value="${shopSale.saleId}"/>
+
                     <td><input type="submit" value="Update" /></td>
                 </form>
                 </tr>

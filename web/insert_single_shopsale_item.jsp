@@ -32,8 +32,11 @@
 
             <label for="quantity">Quantity: </label>
             <input type="number" id = "quantity" min="0" name="quantity" value="" /><br/>
+            
             <input type="hidden" name="purchaseId" value="${param.purchaseId}" />
             <input type="hidden" name="supplierId" value="${param.supplierId}" />
+            <input type="hidden" name="saleId" value="${param.saleId}" />
+            <input type="hidden" name="shopId" value="${param.shopId}" />
 
 
             <input type="submit" value="Insert" />
