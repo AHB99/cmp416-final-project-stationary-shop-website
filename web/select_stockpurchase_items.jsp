@@ -54,7 +54,7 @@
                             <td>${suppliedItem.item.itemBrand.brandName}</td>
                             <td>${suppliedItem.supplierPrice}</td>
                             <td>
-                                <input type="number" name="itemIndex:${vstat.index}" value="0" />
+                                <input type="number" min="0" name="itemIndex:${vstat.index}" value="0" />
                             </td>
                             <td>
                                 ${suppliedItem.item.getStockAtShop(currentStockPurchase.shopBranch.shopId)}

@@ -31,7 +31,7 @@
 
 
                 <label for="quantity">Quantity: </label>
-                <input type="number" id = "quantity" name="quantity" value="" /><br/>
+                <input type="number" id = "quantity" min="0" name="quantity" value="" /><br/>
                 <input type="hidden" name="purchaseId" value="${param.purchaseId}" />
                 <input type="hidden" name="supplierId" value="${param.supplierId}" />
 

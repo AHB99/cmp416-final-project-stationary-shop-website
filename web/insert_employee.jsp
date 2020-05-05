@@ -34,7 +34,7 @@
                 <label for="genderF">Female: </label>
                 <input type="radio" id="genderF" name="gender" value="F" /><br/>
                 <label for="salary">Salary: </label>
-                <input type="number" id = "salary" name="salary" value="" /><br/>
+                <input type="number" id = "salary" step="0.01" min="0" name="salary" value="" /><br/>
                 <label for="address">Address: </label>
                 <input type="text" id = "address" name="address" value="" /><br/>
                 

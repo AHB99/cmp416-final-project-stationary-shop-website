@@ -26,7 +26,7 @@
                 <input type="text" id="item_name" name="" value="${selectedShopSaleItem.item.itemName}" disabled />
                 <br/>
                 <label for="purchase_date">Quantity: </label>
-                <input type="number" id="quantity" name="quantity" value="${selectedShopSaleItem.quantity}" />
+                <input type="number" id="quantity" name="quantity" min="0" value="${selectedShopSaleItem.quantity}" />
 
                 <input type="hidden" name="saleId" value="${param.saleId}"/>
                 <input type="hidden" name="itemId" value="${param.itemId}"/>

@@ -54,7 +54,7 @@
                 
                 
                 <label for="salary">Salary: </label>
-                <input type="number" id = "salary" name="salary" value="${selectedEmployee.salary}" /><br/>
+                <input type="number" id = "salary" name="salary" step="0.01" min="0" value="${selectedEmployee.salary}" /><br/>
                 <label for="address">Address: </label>
                 <input type="text" id = "address" name="address" value="${selectedEmployee.address}" /><br/>
 

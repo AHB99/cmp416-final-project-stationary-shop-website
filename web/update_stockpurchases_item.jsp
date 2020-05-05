@@ -32,7 +32,7 @@
                 <input type="text" id="item_name" name="" value="${selectedStockPurchaseItem.suppliedItem.item.itemName}" disabled />
                 <br/>
                 <label for="purchase_date">Quantity: </label>
-                <input type="number" id="quantity" name="quantity" value="${selectedStockPurchaseItem.quantity}" />
+                <input type="number" id="quantity" min="0" name="quantity" value="${selectedStockPurchaseItem.quantity}" />
                 
                 <input type="hidden" name="purchaseId" value="${selectedStockPurchaseItem.purchaseId}"/>
                 <input type="hidden" name="supplierId" value="${selectedStockPurchaseItem.suppliedItem.supplier.supplierId}"/>

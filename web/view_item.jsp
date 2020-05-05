@@ -26,8 +26,8 @@
             </form>
             <form action="view_item.jsp">
                     <label for="price_range_lower">Price Range: </label>
-                    <input type="number" id="price_range_lower" name="priceLower" value=""/> - 
-                    <input type="number" id="price_range_upper" name="priceUpper" value=""/>
+                    <input type="number" id="price_range_lower" step="0.01" min="0" name="priceLower" value=""/> - 
+                    <input type="number" id="price_range_upper" step="0.01" min="0" name="priceUpper" value=""/>
                     <input type="hidden" name="filter_by" value="price_range_fil"/>
                     <input type="submit" value="Filter by Price Range" /><br/>
             </form>

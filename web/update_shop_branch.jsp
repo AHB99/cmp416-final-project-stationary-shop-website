@@ -24,7 +24,7 @@
                 <label for="location">Location: </label>
                 <input type="text" id = "location" name="location" value="${selectedShopBranch.location}" /><br/>
                 <label for="square_footage">Square Footage </label>
-                <input type="number" id = "square_footage" name="squareFootage" value="${selectedShopBranch.squareFootage}" /><br/>
+                <input type="number" id = "square_footage" step="0.01" min="0" name="squareFootage" value="${selectedShopBranch.squareFootage}" /><br/>
                 <input type="hidden" name="shopId" value="${selectedShopBranch.shopId}" /><br/>
                 <input type="submit" value="Update" />
             </fieldset>
