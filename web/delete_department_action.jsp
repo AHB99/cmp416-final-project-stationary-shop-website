@@ -17,6 +17,9 @@
             <jsp:setProperty name="departmentToDelete" property="*" />
         </jsp:useBean>
         <c:choose>
+            <c:when test="${departmentToDelete.hasEmployees()}" >
+                <c:set var="error_msg" value="Error! Reassign employees before deleting department" scope="request" />
+            </c:when>
             <c:when test="${departmentToDelete.deleteDepartment()}" >
                 <c:set var="success_msg" value="Successfully deleted department!" scope="request" />
             </c:when>

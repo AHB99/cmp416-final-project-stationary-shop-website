@@ -33,32 +33,37 @@
                 </tr>
             </thead>
             <tbody>
-            <c:forEach items="${selectedStockPurchase.stockPurchaseItemMgr.stPurItemList}" var="stockPurchaseItem">
-                <tr>
-                    <td>${stockPurchaseItem.suppliedItem.supplier.supplierName}</td>
-                    <td>${stockPurchaseItem.suppliedItem.item.itemName}</td>
-                    <td>${stockPurchaseItem.suppliedItem.item.itemPrice}</td>
-                    <td>${stockPurchaseItem.suppliedItem.item.itemBrand.brandName}</td>
-                    <td>${stockPurchaseItem.suppliedItem.supplierPrice}</td>
-                    <td>${stockPurchaseItem.quantity}</td>
-                    <form action="delete_stockpurchases_item_action.jsp">
-                        <input type="hidden" name="purchaseId" value="${selectedStockPurchase.purchaseId}"/>
-                        <input type="hidden" name="supplierId" value="${stockPurchaseItem.suppliedItem.supplier.supplierId}"/>
-                        <input type="hidden" name="itemId" value="${stockPurchaseItem.suppliedItem.item.itemId}"/>
-                        <td><input type="submit" value="Delete" /></td>
-                    </form>
-                    <form action="update_stockpurchases_item.jsp">
-                        <input type="hidden" name="purchaseId" value="${selectedStockPurchase.purchaseId}"/>
-                        <input type="hidden" name="supplierId" value="${stockPurchaseItem.suppliedItem.supplier.supplierId}"/>
-                        <input type="hidden" name="itemId" value="${stockPurchaseItem.suppliedItem.item.itemId}"/>
-                        
-                        <td><input type="submit" value="Update" /></td>
-                    </form>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-    <form action="home.jsp" method="POST"><input type="submit" value="Back to Main Menu" /></form> 
+                <c:forEach items="${selectedStockPurchase.stockPurchaseItemMgr.stPurItemList}" var="stockPurchaseItem">
+                    <tr>
+                        <td>${stockPurchaseItem.suppliedItem.supplier.supplierName}</td>
+                        <td>${stockPurchaseItem.suppliedItem.item.itemName}</td>
+                        <td>${stockPurchaseItem.suppliedItem.item.itemPrice}</td>
+                        <td>${stockPurchaseItem.suppliedItem.item.itemBrand.brandName}</td>
+                        <td>${stockPurchaseItem.suppliedItem.supplierPrice}</td>
+                        <td>${stockPurchaseItem.quantity}</td>
+                <form action="delete_stockpurchases_item_action.jsp">
+                    <input type="hidden" name="purchaseId" value="${selectedStockPurchase.purchaseId}"/>
+                    <input type="hidden" name="supplierId" value="${stockPurchaseItem.suppliedItem.supplier.supplierId}"/>
+                    <input type="hidden" name="itemId" value="${stockPurchaseItem.suppliedItem.item.itemId}"/>
+                    <td><input type="submit" value="Delete" /></td>
+                </form>
+                <form action="update_stockpurchases_item.jsp">
+                    <input type="hidden" name="purchaseId" value="${selectedStockPurchase.purchaseId}"/>
+                    <input type="hidden" name="supplierId" value="${stockPurchaseItem.suppliedItem.supplier.supplierId}"/>
+                    <input type="hidden" name="itemId" value="${stockPurchaseItem.suppliedItem.item.itemId}"/>
+
+                    <td><input type="submit" value="Update" /></td>
+                </form>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
+<form action="insert_single_stockpurchase_item.jsp">
+    <input type="hidden" name="purchaseId" value="${selectedStockPurchase.purchaseId}"/>
+
+    <td><input type="submit" value="Add Item" /></td>
+</form>
+<form action="home.jsp" method="POST"><input type="submit" value="Back to Main Menu" /></form> 
 
 </body>
 </html>

@@ -23,7 +23,7 @@
         <form action="login_action.jsp" method="post">
             <fieldset>
                 <label for="username">Username:</label>
-                <input id="username" type="text" name="username" value="" required/>
+                <input id="username" type="text" name="username" value="" required/><br/>
                 <label for="password">Password</label>
                 <input id="password" type="password" name="password" value="" required/>
             </fieldset>

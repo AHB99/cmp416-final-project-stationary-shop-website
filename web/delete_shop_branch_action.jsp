@@ -16,6 +16,9 @@
             <jsp:setProperty name="shopBranchToDelete" property="*" />
         </jsp:useBean>
         <c:choose>
+            <c:when test="${shopBranchToDelete.hasEmployees()}" >
+                <c:set var="success_msg" value="Error! Reassign employees before deleting shop branch" scope="request" />
+            </c:when>
             <c:when test="${shopBranchToDelete.deleteShopBranch()}" >
                 <c:set var="success_msg" value="Successfully deleted department!" scope="request" />
             </c:when>

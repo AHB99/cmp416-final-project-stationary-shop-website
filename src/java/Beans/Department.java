@@ -108,6 +108,23 @@ public class Department {
         }
     }
     
+    
+    public boolean hasEmployees(){
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from employee where department_id = ?");
+            crs.setInt(1, departmentId);
+            crs.execute();
+            if (crs.next()){
+                return true;
+            }
+            return false;
+        } catch (SQLException ex) {
+            Logger.getLogger(Department.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     private Integer departmentId;
     private String departmentName;
     

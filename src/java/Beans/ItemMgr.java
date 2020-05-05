@@ -89,6 +89,54 @@ public class ItemMgr {
         } 
     }
     
+    public void retrieveItemsNotSuppliedBySupplier(int supplierId) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from item i, brands b where i.brand = b.brand_id and i.item_id not in (select item_id from supplies where supplier_id = ?)");
+            crs.setInt(1, supplierId);
+            crs.execute();
+            while (crs.next()) {
+                itemList.add(new Item(crs.getInt("item_id"), crs.getString("name"), crs.getFloat("price"), new Brand(crs.getInt("brand_id"), crs.getString("brand_name"))));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemMgr.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public void retrieveItemsNotSoldByShop(int shopId) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from item i, brands b where i.brand = b.brand_id and i.item_id not in (select item_id from sells where shop_id = ?)");
+            crs.setInt(1, shopId);
+            crs.execute();
+            while (crs.next()) {
+                itemList.add(new Item(crs.getInt("item_id"), crs.getString("name"), crs.getFloat("price"), new Brand(crs.getInt("brand_id"), crs.getString("brand_name"))));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemMgr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void retrieveItemsNotInStockPurchaseBySupplier(int purchaseId, int supplierId) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from supplies s, item i, brands b where s.supplier_id = ? and s.item_id = i.item_id and i.brand = b.brand_id and i.item_id not in (select item_id from stock_purchase_items where purchase_id = ? and supplier_id = ?)");
+            crs.setInt(1, supplierId);
+            crs.setInt(2, purchaseId);
+            crs.setInt(3, supplierId);
+            crs.execute();
+            while (crs.next()) {
+                itemList.add(new Item(crs.getInt("item_id"), crs.getString("name"), crs.getFloat("price"), new Brand(crs.getInt("brand_id"), crs.getString("brand_name"))));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemMgr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public boolean isEmpty(){
+        return itemList.isEmpty();
+    }
+    
     public void addItem(Item item){
         itemList.add(item);
     }

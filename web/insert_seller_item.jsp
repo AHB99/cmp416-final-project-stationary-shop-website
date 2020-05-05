@@ -15,25 +15,18 @@
     <body>
         <jsp:useBean id="shopBranchMgr" class="Beans.ShopBranchMgr" />
         ${shopBranchMgr.retrieveShopBranches()}
-        <jsp:useBean id="itemMgr" class="Beans.ItemMgr" />
-        ${itemMgr.retrieveItems()}
-        <h1>Match Item(s) for Shop</h1>
-        <form action="insert_seller_item_action.jsp">
+
+        <h1>Select Shop</h1>
+        <form action="select_seller_item_info.jsp">
             <fieldset>
-                <legend>Enter Details</legend>
                 <label for="shop_id">Shop Branch: </label>
                 <select id="shop_id" name="shopId">
                     <c:forEach items="${shopBranchMgr.shopList}" var="shop">
                         <option value="${shop.shopId}">${shop.location}</option>
                     </c:forEach>        
                 </select><br/>
-                <label for="item_id">Item: </label>
-                <select id="item_id" name="itemIds" multiple="multiple">
-                    <c:forEach items="${itemMgr.itemList}" var="item">
-                        <option value="${item.itemId}">${item.itemName}</option>
-                    </c:forEach>        
-                </select><br/>
-                <input type="submit" value="Insert" />
+                
+                <input type="submit" value="Select" />
             </fieldset>
         </form>
     </body>

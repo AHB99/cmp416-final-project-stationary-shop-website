@@ -17,13 +17,14 @@
             <jsp:setProperty name="brandToInsert" property="*" />
         </jsp:useBean>
 
-    <c:choose>
-        <c:when test="${brandToInsert.insertBrand()}" >
-            <c:set var="success_msg" value="Successfully inserted brand!" scope="request" />
-        </c:when>
-        <c:otherwise>
-            <c:set var="error_msg" value="Error inserting brand!" scope="request" />
-        </c:otherwise>
-    </c:choose>
-    <jsp:forward page="action_outcome.jsp" />    </body>
+        <c:choose>
+            <c:when test="${brandToInsert.insertBrand()}" >
+                <c:set var="success_msg" value="Successfully inserted brand!" scope="request" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="error_msg" value="Error inserting brand!" scope="request" />
+            </c:otherwise>
+        </c:choose>
+        <jsp:forward page="action_outcome.jsp" />   
+    </body>
 </html>

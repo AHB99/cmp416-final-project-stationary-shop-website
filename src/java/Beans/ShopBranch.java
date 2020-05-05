@@ -57,8 +57,8 @@ public class ShopBranch {
 
     public ShopBranch() {
     }
-    
-    public boolean insertShopBranch(){
+
+    public boolean insertShopBranch() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
             crs.setCommand("INSERT INTO SHOP_BRANCH (LOCATION, SQUARE_FOOTAGE) VALUES (?,?)");
@@ -71,8 +71,8 @@ public class ShopBranch {
         }
         return false;
     }
-    
-    public void retrieveShopBranch(){
+
+    public void retrieveShopBranch() {
         if (shopId == null) {
             return;
         }
@@ -89,7 +89,7 @@ public class ShopBranch {
             Logger.getLogger(ShopBranch.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public boolean deleteShopBranch() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
@@ -102,7 +102,7 @@ public class ShopBranch {
         }
         return false;
     }
-    
+
     public boolean updateShopBranch() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
@@ -115,12 +115,28 @@ public class ShopBranch {
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(ShopBranch.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return false;
     }
-    
+
+    public boolean hasEmployees() {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("select * from employee where shop_id = ?");
+            crs.setInt(1, shopId);
+            crs.execute();
+            if (crs.next()){
+                return true;
+            }
+            return false;
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopBranch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     private Integer shopId;
     private String location;
     private float squareFootage;
-    
+
 }

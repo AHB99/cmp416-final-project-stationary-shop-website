@@ -29,7 +29,6 @@ public class StockPurchaseItem {
         this.purchaseId = purchaseId;
     }
 
-
     public SuppliedItem getSuppliedItem() {
         return suppliedItem;
     }
@@ -53,13 +52,13 @@ public class StockPurchaseItem {
         this.suppliedItem = suppliedItem;
         this.quantity = quantity;
     }
-    
+
     public StockPurchaseItem(SuppliedItem suppliedItem, int quantity, int purchaseId) {
         this.suppliedItem = suppliedItem;
         this.quantity = quantity;
         this.purchaseId = purchaseId;
     }
-    
+
     public boolean deleteStockPurchaseItem() {
         try {
             CachedRowSet crs = DbCredentials.getConfiguredConnection();
@@ -69,14 +68,14 @@ public class StockPurchaseItem {
             crs.setInt(3, suppliedItem.getItem().getItemId());
 
             crs.execute();
-            
+
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(StockPurchaseItem.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
-    
+
     public void retrieveStockPurchaseItem() {
         if (purchaseId == null || suppliedItem.getSupplier().getSupplierId() == null || suppliedItem.getItem().getItemId() == null) {
             return;
@@ -96,13 +95,12 @@ public class StockPurchaseItem {
             Logger.getLogger(StockPurchaseItem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public boolean updateStockPurchaseItem() {
         try {
-            if (quantity <= 0){
+            if (quantity <= 0) {
                 deleteStockPurchaseItem();
-            }
-            else{
+            } else {
                 CachedRowSet crs = DbCredentials.getConfiguredConnection();
                 crs.setCommand("update stock_purchase_items set quantity = ? where purchase_id = ? and supplier_id = ? and item_id = ?");
                 crs.setInt(1, quantity);
@@ -117,7 +115,25 @@ public class StockPurchaseItem {
         }
         return false;
     }
-    
+
+    public boolean insertStockPurchaseItem() {
+        try {
+
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("insert into stock_purchase_items (purchase_id, supplier_id, item_id, quantity) values(?,?,?,?)");
+            crs.setInt(1, purchaseId);
+            crs.setInt(2, suppliedItem.getSupplier().getSupplierId());
+            crs.setInt(3, suppliedItem.getItem().getItemId());
+            crs.setInt(4, quantity);
+            crs.execute();
+
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(StockPurchaseItem.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     private Integer purchaseId;
     private SuppliedItem suppliedItem;
     private int quantity;
