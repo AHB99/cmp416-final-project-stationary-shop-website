@@ -42,5 +42,19 @@ public class SupplierMgr {
         }
     }
     
+    public void retrieveSuppliersByPartialPhrase(String namePartialPhrase) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM SUPPLIER where lower(supplier_name) like '%"+namePartialPhrase.toLowerCase()+"%'");
+            crs.execute();
+            while (crs.next()) {
+                supplierList.add(new Supplier(crs.getInt("supplier_id"), crs.getString("supplier_name"),
+                        crs.getString("supplier_telephone"), crs.getString("supplier_emailid")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SupplierMgr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private ArrayList<Supplier> supplierList = new ArrayList<>();
 }

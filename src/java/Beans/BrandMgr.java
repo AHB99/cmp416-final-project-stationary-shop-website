@@ -41,6 +41,19 @@ public class BrandMgr {
         }
     }
     
+    public void retrieveBrandsByPartialPhrase(String namePartialPhrase) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM BRANDS where lower(brand_name) like '%"+namePartialPhrase.toLowerCase()+"%'");
+            crs.execute();
+            while (crs.next()) {
+                brandList.add(new Brand(crs.getInt("brand_id"), crs.getString("brand_name")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BrandMgr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
     private ArrayList<Brand> brandList = new ArrayList<>();
 

@@ -40,6 +40,20 @@ public class DepartmentMgr {
             Logger.getLogger(DepartmentMgr.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void retrieveDepartmentsByPartialPhrase(String namePartialPhrase) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM DEPARTMENT where lower(department_name) like '%"+namePartialPhrase.toLowerCase()+"%'");
+            crs.execute();
+            while (crs.next()) {
+                departmentList.add(new Department(crs.getInt("department_id"), crs.getString("department_name")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartmentMgr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private ArrayList<Department> departmentList= new ArrayList<>();
     
 }

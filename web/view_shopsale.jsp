@@ -14,9 +14,38 @@
     </head>
     <body>
         <jsp:useBean id="shopSaleMgr" class="Beans.ShopSaleMgr" />
-        ${shopSaleMgr.retrieveShopSales()}
-
+        <jsp:useBean id="shopBranchMgr" class="Beans.ShopBranchMgr" />
+        ${shopBranchMgr.retrieveShopBranches()}
         <h1>All Shop Sales</h1>
+
+        
+        <fieldset>
+            <legend>Filter By:</legend>
+            <form action="view_shopsale.jsp">
+                <label for="shop">Shop Branch: </label>
+                <select id="shop" name="shopId">
+                    <c:forEach items="${shopBranchMgr.shopList}" var="shop">
+                        <option value="${shop.shopId}">${shop.location}</option>
+                    </c:forEach>        
+                </select>
+                <input type="hidden" name="filter_by" value="shop_branch_fil"/>
+                <input type="submit" value="Filter by Shop Branch" /><br/>
+            </form>
+            <form action="view_shopsale.jsp">
+                <input type="hidden" name="filter_by" value=""/>
+                <input type="submit" value="Clear Filters" /><br/>
+            </form>
+        </fieldset>
+        <br/>
+        <c:choose>
+            <c:when test="${param.filter_by.equals('shop_branch_fil')}">
+                <%shopSaleMgr.retrieveShopSalesByBranch(Integer.parseInt(request.getParameter("shopId")));%>
+            </c:when>
+            <c:otherwise>
+                ${shopSaleMgr.retrieveShopSales()}
+            </c:otherwise>
+        </c:choose>
+
         <table border="1">
             <thead>
                 <tr>

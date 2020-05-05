@@ -15,7 +15,32 @@
     <body>
         <h1>All Brands</h1>
         <jsp:useBean id="brandMgr" class="Beans.BrandMgr"/>
-        ${brandMgr.retrieveBrands()}
+
+        <fieldset>
+            <legend>Filter By:</legend>
+            <form action="view_brand.jsp">
+                <label for="name_partial">Name (Partial Phrase): </label>
+                <input type="text" id="name_partial" name="namePartialPhrase" value=""/>
+                <input type="hidden" name="filter_by" value="name_partial_phrase_fil"/>
+                <input type="submit" value="Filter by Name" /><br/>
+            </form>
+            <form action="view_brand.jsp">
+                <input type="hidden" name="filter_by" value=""/>
+                <input type="submit" value="Clear Filters" /><br/>
+            </form>
+        </fieldset>
+        <br/>
+        <c:choose>
+            <c:when test="${param.filter_by.equals('name_partial_phrase_fil')}">
+                ${brandMgr.retrieveBrandsByPartialPhrase(param.namePartialPhrase)}
+            </c:when>
+            <c:otherwise>
+                ${brandMgr.retrieveBrands()}
+            </c:otherwise>
+        </c:choose>
+
+
+
         <table border="1">
             <thead>
                 <tr>
@@ -34,20 +59,20 @@
                 <c:forEach items="${brandMgr.brandList}" var="brand">
                     <tr>
                         <td>${brand.brandName}</td>
-                        <form action="delete_brand_action.jsp">
-                            <input type="hidden" name="brandId" value="${brand.brandId}"/>
-                            <td><input type="submit" value="Delete" /></td>
-                        </form>
-                        <form action="update_brand.jsp">
-                            <input type="hidden" name="brandId" value="${brand.brandId}"/>
-                            <td><input type="submit" value="Update" /></td>
-                        </form>
-                    </tr>
-                    
-                </c:forEach>
-            </tbody>
-        </table>
-        <form action="home.jsp" method="POST"><input type="submit" value="Back to Main Menu" /></form>        
-    </body>
-    </body>
+                <form action="delete_brand_action.jsp">
+                    <input type="hidden" name="brandId" value="${brand.brandId}"/>
+                    <td><input type="submit" value="Delete" /></td>
+                </form>
+                <form action="update_brand.jsp">
+                    <input type="hidden" name="brandId" value="${brand.brandId}"/>
+                    <td><input type="submit" value="Update" /></td>
+                </form>
+            </tr>
+
+        </c:forEach>
+    </tbody>
+</table>
+<form action="home.jsp" method="POST"><input type="submit" value="Back to Main Menu" /></form>        
+</body>
+</body>
 </html>

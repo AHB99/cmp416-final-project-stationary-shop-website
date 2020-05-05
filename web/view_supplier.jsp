@@ -15,7 +15,32 @@
     <body>
         <h1>All Suppliers</h1>
         <jsp:useBean id="supplierMgr" class="Beans.SupplierMgr"/>
+        
+        <fieldset>
+            <legend>Filter By:</legend>
+            <form action="view_supplier.jsp">
+                <label for="name_partial">Name (Partial Phrase): </label>
+                <input type="text" id="name_partial" name="namePartialPhrase" value=""/>
+                <input type="hidden" name="filter_by" value="name_partial_phrase_fil"/>
+                <input type="submit" value="Filter by Name" /><br/>
+            </form>
+            <form action="view_supplier.jsp">
+                <input type="hidden" name="filter_by" value=""/>
+                <input type="submit" value="Clear Filters" /><br/>
+            </form>
+        </fieldset>
+        <br/>
+        <c:choose>
+            <c:when test="${param.filter_by.equals('name_partial_phrase_fil')}">
+                ${supplierMgr.retrieveSuppliersByPartialPhrase(param.namePartialPhrase)}
+            </c:when>
+            <c:otherwise>
         ${supplierMgr.retrieveSuppliers()}
+            </c:otherwise>
+        </c:choose>
+        
+        
+        
         <table border="1">
             <thead>
                 <tr>

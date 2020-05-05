@@ -42,6 +42,21 @@ public class ShopSaleMgr {
         
     }
     
+    public void retrieveShopSalesByBranch(int shopId) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM shop_sale ss, shop_branch sb where ss.shop_id = sb.shop_id and sb.shop_id = ?");
+            crs.setInt(1, shopId);
+            crs.execute();
+            while (crs.next()) {
+                shopSaleList.add(new ShopSale(crs.getInt("sale_id"), new ShopBranch(crs.getInt("shop_id"), crs.getString("location"), crs.getFloat("square_footage")), crs.getDate("date_of_sale").toLocalDate()));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopSaleMgr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
     
     private ArrayList<ShopSale> shopSaleList = new ArrayList<>();
 }

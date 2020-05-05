@@ -41,5 +41,19 @@ public class StockPurchaseMgr {
         }
     }
     
+    public void retrieveStockPurchasesByBranch(int shopId) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM stock_purchase sp, shop_branch sb where sp.shop_id = sb.shop_id and sb.shop_id = ?");
+            crs.setInt(1, shopId);
+            crs.execute();
+            while (crs.next()) {
+                stockPurchaseList.add(new StockPurchase(crs.getInt("purchase_id"), new ShopBranch(crs.getInt("shop_id"), crs.getString("location"), crs.getFloat("square_footage")), crs.getDate("date_of_purchase").toLocalDate()));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StockPurchaseMgr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private ArrayList<StockPurchase> stockPurchaseList = new ArrayList<>();
 }

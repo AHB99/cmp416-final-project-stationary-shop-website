@@ -42,6 +42,19 @@ public class ShopBranchMgr {
         }
     }
     
+    public void retrieveShopBranchesByPartialPhrase(String locationPartialPhrase) {
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT * FROM SHOP_BRANCH where lower(location) like '%"+locationPartialPhrase.toLowerCase()+"%'");
+            crs.execute();
+            while (crs.next()) {
+                shopList.add(new ShopBranch(crs.getInt("shop_id"), crs.getString("location"), crs.getFloat("square_footage")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ShopBranchMgr.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private ArrayList<ShopBranch> shopList= new ArrayList<>();
     
 }
