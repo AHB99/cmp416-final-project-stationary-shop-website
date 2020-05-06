@@ -31,7 +31,7 @@
             <c:set target="${employeeToUpdate}" property="shopBranch" value="${employeeShopToUpdate}" /> 
         </c:if>
 
-        <c:if test="${!empty param.supervisorId}">
+        <c:if test="${!empty param.supervisorId  and param.supervisorId != ''}">
             <jsp:useBean id="employeeSupervisorToUpdate" class="Beans.Employee">
                 <jsp:setProperty name="employeeSupervisorToUpdate" property="employeeId" param="supervisorId" />
             </jsp:useBean>

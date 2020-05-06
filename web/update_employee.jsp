@@ -87,6 +87,7 @@
                 </select><br/>
                 <label for="supervisorId">Supervisor: </label>
                 <select id="supervisorId" name="supervisorId">
+                    <option value="">None</option>
                     <c:forEach items="${employeeMgr.employeeList}" var="employee">
                         <c:if test="${employee.employeeId != selectedEmployee.employeeId}">
                             <c:choose>
