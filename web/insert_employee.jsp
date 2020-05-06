@@ -30,10 +30,10 @@
                 <input type="text" id = "first_name" required name="firstName" value="" /><br/>
                 <label for="last_name">Last Name: </label>
                 <input type="text" id = "last_name" required name="lastName" value="" /><br/>
-                <label>Gender:</label>
-                <label for="genderM">Male: </label>
-                <input type="radio" id="genderM" name="gender" value="M" checked="checked" />
-                <label for="genderF">Female: </label>
+                <label>Gender:</label><br/>
+                <label for="genderM">Male:</label>
+                <input type="radio" id="genderM" name="gender" value="M" checked="checked" /><br/>
+                <label for="genderF">  Female:</label>
                 <input type="radio" id="genderF" name="gender" value="F" /><br/>
                 <label for="salary">Salary: </label>
                 <input type="number" id = "salary" required step="0.01" min="0" name="salary" value="" /><br/>

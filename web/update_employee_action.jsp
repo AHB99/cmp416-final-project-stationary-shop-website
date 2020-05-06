@@ -42,11 +42,11 @@
 
         <c:choose >
             <c:when test="${employeeToUpdate.updateEmployee()}">
-                <c:set var="success_msg" value="Successfully inserted employee!" scope="request" />
+                <c:set var="success_msg" value="Successfully updated employee!" scope="request" />
 
             </c:when>
             <c:otherwise>
-                <c:set var="error_msg" value="Error inserting employee!" scope="request" />
+                <c:set var="error_msg" value="Error updated employee!" scope="request" />
             </c:otherwise>
         </c:choose>
         <jsp:forward page="action_outcome.jsp" />

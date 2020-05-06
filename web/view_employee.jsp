@@ -95,6 +95,8 @@
                     <c:choose>
                         <c:when test="${employee.supervisor.employeeId != 0}">
                             <td><input type="submit" value="View Supervisor Info" /></td>
+                            <input type="hidden" name="employeeId" value="${employee.supervisor.employeeId}"/>
+
                             </c:when>
                             <c:otherwise>
                             <td><input type="button" value="View Supervisor Info" disabled /></td>

@@ -45,14 +45,22 @@
                 <input type="hidden" name="shopId" value="${selectedEmployee.shopBranch.shopId}"/>
                 <td><input type="submit" value="View Shop Branch Info" /></td>
             </form>            
-            </tr>
-            <tr>
-                <th scope="row">Supervisor: </th>
-            <form action="view_single_employee.jsp">
-                <input type="hidden" name="employeeId" value="${selectedEmployee.supervisor.employeeId}"/>
-                <td><input type="submit" value="View Supervisor Info" /></td>
-            </form>
-            </tr>
+        </tr>
+        <tr>
+            <th scope="row">Supervisor: </th>
+                <c:choose>
+                    <c:when test="${selectedEmployee.supervisor.employeeId != 0}">
+                <form action="view_single_employee.jsp">
+                    <input type="hidden" name="employeeId" value="${selectedEmployee.supervisor.employeeId}"/>
+                    <td><input type="submit" value="View Supervisor Info" /></td>
+                </form>
+
+                </c:when>
+                <c:otherwise>
+                    <td><input type="button" value="View Supervisor Info" disabled /></td>
+                    </c:otherwise>
+                </c:choose>
+    </tr>
 </table>
 <form action="home.jsp" method="POST"><input type="submit" value="Back to Main Menu" /></form>     </body>
 </html>

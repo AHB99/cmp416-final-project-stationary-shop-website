@@ -37,11 +37,11 @@
                 <input type="text" id = "first_name" required name="firstName" value="${selectedEmployee.firstName}" /><br/>
                 <label for="last_name">Last Name: </label>
                 <input type="text" id = "last_name" required name="lastName" value="${selectedEmployee.lastName}" /><br/>
-                <label>Gender:</label>
+                <label>Gender:</label><br/>
                 <c:choose>
                     <c:when test="${selectedEmployee.gender.equals('M')}">
                         <label for="genderM">Male:</label>
-                        <input type="radio" id="genderM" name="gender" value="M" checked />
+                        <input type="radio" id="genderM" name="gender" value="M" checked /><br/>
                         <label for="genderF">Female:</label>
                         <input type="radio" id="genderF" name="gender" value="F" /><br/>
                     </c:when>
