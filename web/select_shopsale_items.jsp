@@ -56,7 +56,7 @@
                 <tbody>
                     <c:forEach items="${itemsToSelect.itemList}" var="item" varStatus="vstat">
                         <tr>
-                            <td>${item.itemName}</td>
+                            <td id="name${vstat.index}" >${item.itemName}</td>
                             <td>${item.itemPrice}</td>
                             <td>${item.itemBrand.brandName}</td>
                             <td>
@@ -79,8 +79,10 @@
                 for (i = 0; i < numRows; ++i){
                     var currQuantity = parseInt(document.getElementById("quantity"+i).value);
                     var currStock = parseInt(document.getElementById("stock"+i).innerHTML);
+                    var currName = document.getElementById("name"+i).innerHTML;
+                    
                     if (currQuantity > currStock){
-                        alert('Out of Stock! Quantity = ' + currQuantity + ' Stock = ' + currStock);
+                        alert(currName + ' out of stock! Quantity = ' + currQuantity + ' Stock = ' + currStock);
                         return false;
                     }
                 }

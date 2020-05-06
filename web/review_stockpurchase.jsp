@@ -40,7 +40,7 @@
                 </tr>
             </c:forEach>
         </tbody>
-    </table>
+    </table><br/>
     <form action="insert_stockpurchase_action.jsp">
         <td><input type="submit" value="Confirm Stock Purchase" /></td>
     </form>
