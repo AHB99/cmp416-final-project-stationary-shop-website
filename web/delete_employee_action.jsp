@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="employeeToDelete" class="Beans.Employee">
             <jsp:setProperty name="employeeToDelete" property="*" />
         </jsp:useBean>

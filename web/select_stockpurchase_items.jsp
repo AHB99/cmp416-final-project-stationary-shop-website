@@ -14,6 +14,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <c:remove scope="session" var="suppliedItemsForStockPurchase" />
         <jsp:useBean id="suppliedItemsForStockPurchase" class="Beans.SuppliedItemMgr" scope="session" />
         <jsp:useBean id="currentStockPurchase" class="Beans.StockPurchase" scope="session"/>

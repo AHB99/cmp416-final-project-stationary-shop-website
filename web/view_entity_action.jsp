@@ -12,6 +12,8 @@
         <title></title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <c:choose>
             <c:when test="${param.entity_choice == 'department'}">
                 <jsp:forward page="view_department.jsp" />

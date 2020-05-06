@@ -3,6 +3,7 @@
     Created on : Apr 30, 2020, 8:57:29 PM
     Author     : azada
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page import="Beans.StockPurchaseItem"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,6 +14,8 @@
         <title></title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="currentStockPurchase" class="Beans.StockPurchase" scope="session"/>
         <jsp:useBean id="suppliedItemsForStockPurchase" class="Beans.SuppliedItemMgr" scope="session" />
         

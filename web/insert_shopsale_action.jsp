@@ -14,6 +14,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="currentShopSale" class="Beans.ShopSale" scope="session"/>
         <jsp:useBean id="itemsToSelect" class="Beans.ItemMgr" scope="session"/>
         

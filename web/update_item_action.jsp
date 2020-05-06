@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="itemToUpdate" class="Beans.Item">
             <jsp:setProperty name="itemToUpdate" property="*" />
         </jsp:useBean>

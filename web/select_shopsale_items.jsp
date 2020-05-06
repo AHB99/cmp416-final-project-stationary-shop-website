@@ -16,6 +16,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <c:remove var="currentShopSale" scope="session" />
         <c:remove var="itemsToSelect" scope="session" />
 

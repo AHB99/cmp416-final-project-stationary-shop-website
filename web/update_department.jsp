@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="selectedDepartment" class="Beans.Department">
             <jsp:setProperty name="selectedDepartment" property="*"/>
         </jsp:useBean>

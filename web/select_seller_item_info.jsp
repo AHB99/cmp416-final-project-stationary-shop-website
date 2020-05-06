@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="itemMgr" class="Beans.ItemMgr" />
         <%itemMgr.retrieveItemsNotSoldByShop(Integer.parseInt(request.getParameter("shopId")));%>
         <c:if test="${itemMgr.isEmpty()}">

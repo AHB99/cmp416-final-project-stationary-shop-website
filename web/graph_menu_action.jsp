@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
     <c:choose>
         <c:when test="${param.graph_choice == 'employee_salary_hist'}">
             <jsp:forward page="graph_employee_salary_hist.jsp" />

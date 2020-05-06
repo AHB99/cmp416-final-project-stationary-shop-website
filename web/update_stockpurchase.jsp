@@ -3,6 +3,7 @@
     Created on : May 1, 2020, 1:10:25 PM
     Author     : azada
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +13,8 @@
         <title></title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <h1>Update Stock Purchase</h1>
         <form action="update_stockpurchase_action.jsp">
             <fieldset>

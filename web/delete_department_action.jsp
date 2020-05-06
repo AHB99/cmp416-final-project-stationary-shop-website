@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="departmentToDelete" class="Beans.Department">
             <jsp:setProperty name="departmentToDelete" property="*" />
         </jsp:useBean>

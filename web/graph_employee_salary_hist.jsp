@@ -3,6 +3,7 @@
     Created on : May 1, 2020, 8:27:01 PM
     Author     : azada
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -44,6 +45,7 @@
         </script>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
         <h1>Employee Salary Histogram</h1>
         <br/>
         <div id="employee_salary_hist" style="width: 900px; height: 500px"></div>

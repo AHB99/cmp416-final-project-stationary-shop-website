@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="shopBranchToDelete" class="Beans.ShopBranch">
             <jsp:setProperty name="shopBranchToDelete" property="*" />
         </jsp:useBean>

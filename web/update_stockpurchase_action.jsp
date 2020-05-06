@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="stockPurchaseToUpdate" class="Beans.StockPurchase">
             <jsp:setProperty name="stockPurchaseToUpdate" property="purchaseId" param="purchaseId" />
         </jsp:useBean>

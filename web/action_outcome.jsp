@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <c:choose>
             <c:when test="${!empty success_msg}">
                 <h1>${success_msg}</h1>

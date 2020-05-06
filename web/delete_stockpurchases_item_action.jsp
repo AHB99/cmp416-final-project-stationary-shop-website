@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="stockPurchaseItemToDelete" class="Beans.StockPurchaseItem">
             <jsp:setProperty name="stockPurchaseItemToDelete" property="*" />
         </jsp:useBean>

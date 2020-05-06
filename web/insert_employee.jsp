@@ -13,6 +13,8 @@
         <title>Insert Employee</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <h1>Insert New Employee</h1>
         <jsp:useBean id="employeeMgr" class="Beans.EmployeeMgr" />
         ${employeeMgr.retrieveEmployees()}

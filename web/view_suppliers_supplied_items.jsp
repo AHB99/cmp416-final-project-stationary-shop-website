@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="suppliedItemMgr" class="Beans.SuppliedItemMgr"/>
         <%suppliedItemMgr.retrieveSuppliedItemsBySupplier(Integer.parseInt(request.getParameter("supplierId")));%>
         

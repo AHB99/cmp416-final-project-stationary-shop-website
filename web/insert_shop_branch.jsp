@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <h1>Insert New Shop Branch</h1>
         <form action="insert_shop_branch_action.jsp">
             <fieldset>

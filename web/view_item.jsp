@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <h1>All Items</h1>
         <jsp:useBean id="itemMgr" class="Beans.ItemMgr"/>
 

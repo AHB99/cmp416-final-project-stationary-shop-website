@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="shopSaleMgr" class="Beans.ShopSaleMgr" />
         <jsp:useBean id="shopBranchMgr" class="Beans.ShopBranchMgr" />
         ${shopBranchMgr.retrieveShopBranches()}

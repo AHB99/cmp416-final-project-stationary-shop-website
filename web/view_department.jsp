@@ -13,6 +13,8 @@
         <title>View Departments</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <h1>All Departments</h1>
         <jsp:useBean id="departmentMgr" class="Beans.DepartmentMgr"/>
         <fieldset>

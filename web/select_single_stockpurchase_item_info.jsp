@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="itemMgr" class="Beans.ItemMgr" />
         <%itemMgr.retrieveItemsNotInStockPurchaseBySupplier(Integer.parseInt(request.getParameter("purchaseId")),Integer.parseInt(request.getParameter("supplierId")));%>
         <h1>Select Item</h1>

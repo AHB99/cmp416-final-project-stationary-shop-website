@@ -3,6 +3,7 @@
     Created on : Apr 28, 2020, 7:14:00 PM
     Author     : azada
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="selectedEmployee" class="Beans.Employee">
             <jsp:setProperty name="selectedEmployee" property="*"/>
         </jsp:useBean>

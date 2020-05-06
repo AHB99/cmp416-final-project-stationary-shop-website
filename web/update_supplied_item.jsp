@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="selectedSuppliedItem" class="Beans.SuppliedItem"/>
         
         <jsp:useBean id="selectedSuppliedItemSupplier" class="Beans.Supplier">

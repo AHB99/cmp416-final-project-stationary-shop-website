@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <h1>Update Shop Sale</h1>
         <form action="update_shopsale_action.jsp">
             <fieldset>

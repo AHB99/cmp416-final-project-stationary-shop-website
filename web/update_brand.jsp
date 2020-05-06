@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="selectedBrand" class="Beans.Brand">
             <jsp:setProperty name="selectedBrand" property="*"/>
         </jsp:useBean>

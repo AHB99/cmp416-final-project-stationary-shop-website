@@ -14,6 +14,8 @@
         <title></title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="employeeToInsert" class="Beans.Employee">
             <jsp:setProperty name="employeeToInsert" property="*" />
         </jsp:useBean>

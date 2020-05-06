@@ -14,6 +14,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="shopSaleItem" class="Beans.ShopSaleItem">
             <jsp:setProperty name="shopSaleItem" property="*"/>
         </jsp:useBean>

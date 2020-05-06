@@ -3,6 +3,7 @@
     Created on : May 2, 2020, 1:09:09 AM
     Author     : azada
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -48,6 +49,8 @@
         </script>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <h1>Monthly Profit Line Graph</h1>
         <br/>
         <div id="monthly_profit_line" style="width: 900px; height: 500px"></div>

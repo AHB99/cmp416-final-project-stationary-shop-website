@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="brandToInsert" class="Beans.Brand">
             <jsp:setProperty name="brandToInsert" property="*" />
         </jsp:useBean>

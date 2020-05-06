@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <h1>All Brands</h1>
         <jsp:useBean id="brandMgr" class="Beans.BrandMgr"/>
 

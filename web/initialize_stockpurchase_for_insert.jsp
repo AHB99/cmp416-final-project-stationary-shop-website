@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <c:remove scope="session" var="currentStockPurchase" />
         <jsp:useBean id="currentStockPurchase" class="Beans.StockPurchase" scope="session">
             <jsp:useBean id="currentStockPurchaseShop" class="Beans.ShopBranch">

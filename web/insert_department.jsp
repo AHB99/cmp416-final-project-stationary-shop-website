@@ -3,6 +3,7 @@
     Created on : Apr 26, 2020, 12:07:46 AM
     Author     : azada
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <h1>Insert New Department</h1>
         <form action="insert_department_action.jsp">
             <fieldset>

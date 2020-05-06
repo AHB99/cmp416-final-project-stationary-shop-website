@@ -13,6 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%@ include file="login_checker_gist" %>
+
         <jsp:useBean id="sellerItemToDelete" class="Beans.SellerItem"/>
 
         <jsp:useBean id="sellerItemShopToDelete" class="Beans.ShopBranch">
