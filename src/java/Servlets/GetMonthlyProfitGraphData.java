@@ -47,7 +47,7 @@ public class GetMonthlyProfitGraphData extends HttpServlet {
             ArrayList<String> profitStrings = new ArrayList<>();
             
             for (MonthlyRevenueExpense monthlyProfit : fullProfitList) {
-                profitStrings.add("[\"" + monthlyProfit.getDateOfAccount().format(DateTimeFormatter.ofPattern("YYYY-MMM")) + "\", " + monthlyProfit.getAccountValue() + "]");
+                profitStrings.add("[\"" + monthlyProfit.getDateOfAccount().format(DateTimeFormatter.ofPattern("YYYY-MMM-dd")) + "\", " + monthlyProfit.getAccountValue() + "]");
             }
             String profitList = "[" + String.join(",", profitStrings) + "]";
             out.println(profitList);

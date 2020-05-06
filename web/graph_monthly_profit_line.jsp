@@ -23,13 +23,16 @@
 
             function dbRetrievalCallback(fetched) {
                 retrievedData = $.parseJSON(fetched);
+                for (i = 0; i < retrievedData.length; ++i){
+                    retrievedData[i][0] = new Date(retrievedData[i][0]);
+                }
                 drawChart(retrievedData);
             }
 
             function drawChart(retrievedData) {
 
                 var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Month');
+                data.addColumn('date', 'Month');
                 data.addColumn('number', 'Profit');
 
                 data.addRows(retrievedData);
