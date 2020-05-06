@@ -23,7 +23,7 @@
                 <input type="text" id="location" required name="" value="${param.location}" disabled />
                 <br/>
                 <label for="purchase_date">Date: </label>
-                <input type="date" id="purchase_date" required name="purchaseDate" value="${param.purchaseDate}" />
+                <input type="date" id="purchase_date" required name="purchaseDate" value="${param.purchaseDate}" /><br/>
                 <input type="hidden" name="purchaseId" value="${param.purchaseId}" />
 
                 <input type="submit" value="Update" />

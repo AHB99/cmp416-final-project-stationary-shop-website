@@ -24,7 +24,7 @@
 
                 <br/>
                 <label for="sale_date">Date: </label>
-                <input type="date" id="sale_date" required name="saleDate" value="${param.saleDate}" />
+                <input type="date" id="sale_date" required name="saleDate" value="${param.saleDate}" /><br/>
                 <input type="hidden" name="saleId" value="${param.saleId}" />
 
                 <input type="submit" value="Update" />

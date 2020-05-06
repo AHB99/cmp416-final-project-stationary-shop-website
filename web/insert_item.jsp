@@ -25,6 +25,7 @@
                 <input type="text" id = "item_name" required name="itemName" value="" /><br/>
                 <label for="item_price">Price: </label>
                 <input type="number" id = "item_price" required step="0.01" min="0" name="itemPrice" value="" /><br/>
+                <label for="brand_name">Brand: </label>
                 <select id="brand_name" name="brandId">
                     <c:forEach items="${brandMgr.brandList}" var="brand">
                         <option value="${brand.brandId}">${brand.brandName}</option>

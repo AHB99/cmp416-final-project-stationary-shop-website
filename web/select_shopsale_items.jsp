@@ -46,7 +46,7 @@
                             Brand
                         </th>
                         <th>
-                            Quantity Purchased
+                            Quantity Sold
                         </th>
                         <th>
                             Current Stock
