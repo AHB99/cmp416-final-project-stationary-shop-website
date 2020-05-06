@@ -23,9 +23,9 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="item_name">Name: </label>
-                <input type="text" id = "item_name" name="itemName" value="${selectedItem.itemName}" /><br/>
+                <input type="text" id = "item_name" required name="itemName" value="${selectedItem.itemName}" /><br/>
                 <label for="item_price">Price: </label>
-                <input type="number" id = "item_price" name="itemPrice" step="0.01" min="0" value="${selectedItem.itemPrice}" /><br/>
+                <input type="number" id = "item_price" required name="itemPrice" step="0.01" min="0" value="${selectedItem.itemPrice}" /><br/>
                 <select id="brand_name" name="brandId">
                     <c:forEach items="${brandMgr.brandList}" var="brand">   
                         <c:choose>

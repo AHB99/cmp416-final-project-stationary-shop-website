@@ -22,11 +22,11 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="supplier_name">Name: </label>
-                <input type="text" id = "supplier_name" name="supplierName" value="${selectedSupplier.supplierName}" /><br/>
+                <input type="text" id = "supplier_name" required name="supplierName" value="${selectedSupplier.supplierName}" /><br/>
                 <label for="telephone">Telephone: </label>
-                <input type="tel" id = "telephone" name="telephone" value="${selectedSupplier.telephone}" /><br/>
+                <input type="tel" id = "telephone" required name="telephone" value="${selectedSupplier.telephone}" /><br/>
                 <label for="email">Email ID: </label>
-                <input type="email" id = "email" name="email" value="${selectedSupplier.email}" /><br/>
+                <input type="email" id = "email" required name="email" value="${selectedSupplier.email}" /><br/>
                 <input type="hidden" name="supplierId" value="${selectedSupplier.supplierId}" />
                 <input type="submit" value="Update" />
             </fieldset>

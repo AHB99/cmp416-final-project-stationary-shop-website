@@ -32,9 +32,9 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="first_name">First Name: </label>
-                <input type="text" id = "first_name" name="firstName" value="${selectedEmployee.firstName}" /><br/>
+                <input type="text" id = "first_name" required name="firstName" value="${selectedEmployee.firstName}" /><br/>
                 <label for="last_name">Last Name: </label>
-                <input type="text" id = "last_name" name="lastName" value="${selectedEmployee.lastName}" /><br/>
+                <input type="text" id = "last_name" required name="lastName" value="${selectedEmployee.lastName}" /><br/>
                 <label>Gender:</label>
                 <c:choose>
                     <c:when test="${selectedEmployee.gender.equals('M')}">
@@ -54,9 +54,9 @@
                 
                 
                 <label for="salary">Salary: </label>
-                <input type="number" id = "salary" name="salary" step="0.01" min="0" value="${selectedEmployee.salary}" /><br/>
+                <input type="number" id = "salary" required name="salary" step="0.01" min="0" value="${selectedEmployee.salary}" /><br/>
                 <label for="address">Address: </label>
-                <input type="text" id = "address" name="address" value="${selectedEmployee.address}" /><br/>
+                <input type="text" id = "address" required name="address" value="${selectedEmployee.address}" /><br/>
 
                 <label for="departmentId">Department: </label>
                 <select id="departmentId" name="departmentId">

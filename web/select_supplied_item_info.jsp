@@ -31,7 +31,7 @@
 
 
                 <label for="supplier_price">Supplier Price: </label>
-                <input type="number" id = "supplier_price" step="0.01" min="0" name="supplierPrice" value="" /><br/>
+                <input type="number" id = "supplier_price" required step="0.01" min="0" name="supplierPrice" value="" /><br/>
                 <input type="hidden" name="supplierId" value="${param.supplierId}" />
 
                 <input type="submit" value="Insert" />

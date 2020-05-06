@@ -18,9 +18,9 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="location">Location: </label>
-                <input type="text" id = "location" name="location" value="" /><br/>
+                <input type="text" id = "location" required name="location" value="" /><br/>
                 <label for="square_footage">Square Footage </label>
-                <input type="number" id = "square_footage" step="0.01" min="0" name="squareFootage" value="" /><br/>
+                <input type="number" id = "square_footage" required step="0.01" min="0" name="squareFootage" value="" /><br/>
                 <input type="submit" value="Insert" />
             </fieldset>
         </form>

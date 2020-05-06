@@ -25,18 +25,18 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="first_name">First Name: </label>
-                <input type="text" id = "first_name" name="firstName" value="" /><br/>
+                <input type="text" id = "first_name" required name="firstName" value="" /><br/>
                 <label for="last_name">Last Name: </label>
-                <input type="text" id = "last_name" name="lastName" value="" /><br/>
+                <input type="text" id = "last_name" required name="lastName" value="" /><br/>
                 <label>Gender:</label>
                 <label for="genderM">Male: </label>
                 <input type="radio" id="genderM" name="gender" value="M" checked="checked" />
                 <label for="genderF">Female: </label>
                 <input type="radio" id="genderF" name="gender" value="F" /><br/>
                 <label for="salary">Salary: </label>
-                <input type="number" id = "salary" step="0.01" min="0" name="salary" value="" /><br/>
+                <input type="number" id = "salary" required step="0.01" min="0" name="salary" value="" /><br/>
                 <label for="address">Address: </label>
-                <input type="text" id = "address" name="address" value="" /><br/>
+                <input type="text" id = "address" required name="address" value="" /><br/>
                 
                 <label for="departmentId">Department: </label>
                 <select id="departmentId" name="departmentId">

@@ -20,14 +20,14 @@
             <legend>Filter By:</legend>
             <form action="view_item.jsp">
                 <label for="name_partial">Name (Partial Phrase): </label>
-                <input type="text" id="name_partial" name="namePartialPhrase" value=""/>
+                <input type="text" id="name_partial" required name="namePartialPhrase" value=""/>
                 <input type="hidden" name="filter_by" value="name_partial_phrase_fil"/>
                 <input type="submit" value="Filter by Name" /><br/>
             </form>
             <form action="view_item.jsp">
                     <label for="price_range_lower">Price Range: </label>
-                    <input type="number" id="price_range_lower" step="0.01" min="0" name="priceLower" value=""/> - 
-                    <input type="number" id="price_range_upper" step="0.01" min="0" name="priceUpper" value=""/>
+                    <input type="number" id="price_range_lower" required step="0.01" min="0" name="priceLower" value=""/> - 
+                    <input type="number" id="price_range_upper" required step="0.01" min="0" name="priceUpper" value=""/>
                     <input type="hidden" name="filter_by" value="price_range_fil"/>
                     <input type="submit" value="Filter by Price Range" /><br/>
             </form>

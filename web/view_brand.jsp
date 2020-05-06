@@ -20,7 +20,7 @@
             <legend>Filter By:</legend>
             <form action="view_brand.jsp">
                 <label for="name_partial">Name (Partial Phrase): </label>
-                <input type="text" id="name_partial" name="namePartialPhrase" value=""/>
+                <input type="text" id="name_partial" required name="namePartialPhrase" value=""/>
                 <input type="hidden" name="filter_by" value="name_partial_phrase_fil"/>
                 <input type="submit" value="Filter by Name" /><br/>
             </form>

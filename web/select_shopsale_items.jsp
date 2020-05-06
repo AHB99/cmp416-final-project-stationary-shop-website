@@ -58,7 +58,7 @@
                             <td>${item.itemPrice}</td>
                             <td>${item.itemBrand.brandName}</td>
                             <td>
-                                <input id="quantity${vstat.index}" min="0" type="number" name="itemIndex:${vstat.index}" value="0" />
+                                <input id="quantity${vstat.index}" required min="0" type="number" name="itemIndex:${vstat.index}" value="0" />
                             </td>
                             <fmt:parseNumber var="shopIdInt" integerOnly="true" type="number" value="${param.shopId}"/> 
                             <td id="stock${vstat.index}">

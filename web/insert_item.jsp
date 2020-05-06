@@ -20,9 +20,9 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="item_name">Name: </label>
-                <input type="text" id = "item_name" name="itemName" value="" /><br/>
+                <input type="text" id = "item_name" required name="itemName" value="" /><br/>
                 <label for="item_price">Price: </label>
-                <input type="number" id = "item_price" step="0.01" min="0" name="itemPrice" value="" /><br/>
+                <input type="number" id = "item_price" required step="0.01" min="0" name="itemPrice" value="" /><br/>
                 <select id="brand_name" name="brandId">
                     <c:forEach items="${brandMgr.brandList}" var="brand">
                         <option value="${brand.brandId}">${brand.brandName}</option>

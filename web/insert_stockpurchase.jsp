@@ -27,7 +27,7 @@
                     </c:forEach>        
                 </select><br/>
                 <label for="purchase_date">Date: </label>
-                <input type="date" id="purchase_date" name="purchaseDate" value="" />
+                <input type="date" id="purchase_date" required name="purchaseDate" value="" />
                 <input type="submit" value="Add items" />
             </fieldset>
         </form>

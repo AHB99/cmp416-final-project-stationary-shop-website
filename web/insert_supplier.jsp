@@ -17,11 +17,11 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="supplier_name">Name: </label>
-                <input type="text" id = "supplier_name" name="supplierName" value="" /><br/>
+                <input type="text" id = "supplier_name" required name="supplierName" value="" /><br/>
                 <label for="telephone">Telephone: </label>
-                <input type="tel" id = "telephone" name="telephone" value="" /><br/>
+                <input type="tel" id = "telephone" required name="telephone" value="" /><br/>
                 <label for="email">Email ID: </label>
-                <input type="email" id = "email" name="email" value="" /><br/>
+                <input type="email" id = "email" required name="email" value="" /><br/>
                 <input type="submit" value="Insert" />
             </fieldset>
         </form>

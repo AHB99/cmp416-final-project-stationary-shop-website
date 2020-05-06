@@ -17,7 +17,7 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="brand_name">Brand Name: </label>
-                <input type="text" id = "brand_name" name="brandName" value="" /><br/>
+                <input type="text" id = "brand_name" required name="brandName" value="" /><br/>
                 <input type="submit" value="Insert" />
             </fieldset>
         </form>

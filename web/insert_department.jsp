@@ -17,7 +17,7 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="department_name">Department Name: </label>
-                <input type="text" id = "department_name" name="departmentName" value="" /><br/>
+                <input type="text" id = "department_name" required name="departmentName" value="" /><br/>
                 <input type="submit" value="Insert" />
             </fieldset>
         </form>

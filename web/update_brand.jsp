@@ -21,7 +21,7 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="brand_name">Brand Name: </label>
-                <input type="text" id = "brand_name" name="brandName" value="${selectedBrand.brandName}" /><br/>
+                <input type="text" id = "brand_name" required name="brandName" value="${selectedBrand.brandName}" /><br/>
                 <input type="hidden" name="brandId" value="${selectedBrand.brandId}" /><br/>
 
                 <input type="submit" value="Update" />

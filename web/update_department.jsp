@@ -22,7 +22,7 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="department_name">Department Name: </label>
-                <input type="text" id = "department_name" name="departmentName" value="${selectedDepartment.departmentName}" /><br/>
+                <input type="text" id = "department_name" required name="departmentName" value="${selectedDepartment.departmentName}" /><br/>
                 <input type="hidden" name="departmentId" value="${selectedDepartment.departmentId}" />
                 <input type="submit" value="Update" />
             </fieldset>

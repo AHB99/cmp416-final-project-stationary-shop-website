@@ -17,10 +17,10 @@
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="location">Shop Branch of Stock Purchase: </label>
-                <input type="text" id="location" name="" value="${param.location}" disabled />
+                <input type="text" id="location" required name="" value="${param.location}" disabled />
                 <br/>
                 <label for="purchase_date">Date: </label>
-                <input type="date" id="purchase_date" name="purchaseDate" value="${param.purchaseDate}" />
+                <input type="date" id="purchase_date" required name="purchaseDate" value="${param.purchaseDate}" />
                 <input type="hidden" name="purchaseId" value="${param.purchaseId}" />
 
                 <input type="submit" value="Update" />
