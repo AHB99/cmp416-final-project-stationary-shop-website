@@ -16,7 +16,7 @@
         <%@ include file="login_checker_gist" %>
 
         <h1>Insert New Brand</h1>
-        <form action="insert_brand_action.jsp">
+        <form action="insert_brand_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="brand_name">Brand Name: </label>

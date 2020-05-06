@@ -39,12 +39,12 @@
                         <td>${shopSaleItem.item.itemPrice}</td>
                         <td>${shopSaleItem.item.itemBrand.brandName}</td>
                         <td>${shopSaleItem.quantity}</td>
-                <form action="delete_shopsale_item_action.jsp">
+                <form action="delete_shopsale_item_action.jsp" method="post">
                     <input type="hidden" name="saleId" value="${selectedShopSale.saleId}"/>
                     <input type="hidden" name="itemId" value="${shopSaleItem.item.itemId}"/>
                     <td><input type="submit" value="Delete" /></td>
                 </form>
-                <form action="update_shopsale_item.jsp">
+                <form action="update_shopsale_item.jsp" method="post">
                     <input type="hidden" name="saleId" value="${selectedShopSale.saleId}"/>
                     <input type="hidden" name="itemId" value="${shopSaleItem.item.itemId}"/>
                     <td><input type="submit" value="Update" /></td>
@@ -53,7 +53,7 @@
         </c:forEach>
     </tbody>
 </table>
-<form action="insert_single_shopsale_item.jsp">
+<form action="insert_single_shopsale_item.jsp" method="post">
     <input type="hidden" name="saleId" value="${param.saleId}"/>
     <input type="hidden" name="shopId" value="${param.shopId}"/>
     <td><input type="submit" value="Add Item" /></td>

@@ -18,7 +18,7 @@
         <h1>Insert New Item</h1>
         <jsp:useBean id="brandMgr" class="Beans.BrandMgr" />
         ${brandMgr.retrieveBrands()}
-        <form action="insert_item_action.jsp">
+        <form action="insert_item_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="item_name">Name: </label>

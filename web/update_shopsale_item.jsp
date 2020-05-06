@@ -22,7 +22,7 @@
         <%selectedShopSaleItem.setItem(new Item(Integer.parseInt(request.getParameter("itemId"))));%>
         ${selectedShopSaleItem.retrieveShopSaleItem()}
         <h1>Update Shop Sale Item</h1>
-        <form action="update_shopsales_item_action.jsp">
+        <form action="update_shopsales_item_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="item_name">Item: </label>

@@ -51,7 +51,7 @@
                         <td>
                             ${item.getStockAtShop(shopIdInt)}
                         </td>
-                        <form action="delete_seller_item_action.jsp">
+                        <form action="delete_seller_item_action.jsp" method="post">
                             <input type="hidden" name="shopId" value="${param.shopId}"/>
                             <input type="hidden" name="itemId" value="${item.itemId}"/>
                             <td><input type="submit" value="Delete" /></td>

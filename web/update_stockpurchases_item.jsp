@@ -24,7 +24,7 @@
         <% selectedStockPurchaseItem.setSuppliedItem(new SuppliedItem(new Supplier(Integer.parseInt(request.getParameter("supplierId"))),new Item(Integer.parseInt(request.getParameter("itemId"))),0)); %>
         ${selectedStockPurchaseItem.retrieveStockPurchaseItem()}
         <h1>Update Stock Purchase Item</h1>
-        <form action="update_stockpurchases_item_action.jsp">
+        <form action="update_stockpurchases_item_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="supplier_name">Supplier: </label>

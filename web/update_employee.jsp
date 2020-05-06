@@ -30,7 +30,7 @@
 
 
 
-        <form action="update_employee_action.jsp">
+        <form action="update_employee_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="first_name">First Name: </label>

@@ -41,7 +41,7 @@
             </tr>
             <tr>
                 <th scope="row">Shop Branch: </th>
-            <form action="view_single_shop_branch.jsp">
+            <form action="view_single_shop_branch.jsp" method="post">
                 <input type="hidden" name="shopId" value="${selectedEmployee.shopBranch.shopId}"/>
                 <td><input type="submit" value="View Shop Branch Info" /></td>
             </form>            
@@ -50,7 +50,7 @@
             <th scope="row">Supervisor: </th>
                 <c:choose>
                     <c:when test="${selectedEmployee.supervisor.employeeId != 0}">
-                <form action="view_single_employee.jsp">
+                <form action="view_single_employee.jsp" method="post">
                     <input type="hidden" name="employeeId" value="${selectedEmployee.supervisor.employeeId}"/>
                     <td><input type="submit" value="View Supervisor Info" /></td>
                 </form>

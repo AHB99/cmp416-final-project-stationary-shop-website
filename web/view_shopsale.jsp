@@ -23,7 +23,7 @@
         
         <fieldset>
             <legend>Filter By:</legend>
-            <form action="view_shopsale.jsp">
+            <form action="view_shopsale.jsp" method="post">
                 <label for="shop">Shop Branch: </label>
                 <select id="shop" name="shopId">
                     <c:forEach items="${shopBranchMgr.shopList}" var="shop">
@@ -33,7 +33,7 @@
                 <input type="hidden" name="filter_by" value="shop_branch_fil"/>
                 <input type="submit" value="Filter by Shop Branch" /><br/>
             </form>
-            <form action="view_shopsale.jsp">
+            <form action="view_shopsale.jsp" method="post">
                 <input type="hidden" name="filter_by" value=""/>
                 <input type="submit" value="Clear Filters" /><br/>
             </form>
@@ -73,17 +73,17 @@
                 <tr>
                     <td>${shopSale.shopBranch.location}</td>
                     <td>${shopSale.saleDate}</td>
-                <form action="view_shopsale_items.jsp">
+                <form action="view_shopsale_items.jsp" method="post">
                     <input type="hidden" name="saleId" value="${shopSale.saleId}"/>
                     <input type="hidden" name="shopId" value="${shopSale.shopBranch.shopId}"/>
 
                     <td><input type="submit" value="View Sold Items" /></td>
                 </form>
-                <form action="delete_shopsale_action.jsp">
+                <form action="delete_shopsale_action.jsp" method="post">
                     <input type="hidden" name="saleId" value="${shopSale.saleId}"/>
                     <td><input type="submit" value="Delete" /></td>
                 </form>
-                <form action="update_shopsale.jsp">
+                <form action="update_shopsale.jsp" method="post">
                     <input type="hidden" name="location" value="${shopSale.shopBranch.location}"/>
                     <input type="hidden" name="saleDate" value="${shopSale.saleDate}"/>
                     <input type="hidden" name="saleId" value="${shopSale.saleId}"/>

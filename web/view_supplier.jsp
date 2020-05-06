@@ -20,13 +20,13 @@
         
         <fieldset>
             <legend>Filter By:</legend>
-            <form action="view_supplier.jsp">
+            <form action="view_supplier.jsp" method="post">
                 <label for="name_partial">Name (Partial Phrase): </label>
                 <input type="text" id="name_partial" required name="namePartialPhrase" value=""/>
                 <input type="hidden" name="filter_by" value="name_partial_phrase_fil"/>
                 <input type="submit" value="Filter by Name" /><br/>
             </form>
-            <form action="view_supplier.jsp">
+            <form action="view_supplier.jsp" method="post">
                 <input type="hidden" name="filter_by" value=""/>
                 <input type="submit" value="Clear Filters" /><br/>
             </form>
@@ -72,16 +72,16 @@
                         <td>${supplier.supplierName}</td>
                         <td>${supplier.telephone}</td>
                         <td>${supplier.email}</td>
-                        <form action="view_suppliers_supplied_items.jsp">
+                        <form action="view_suppliers_supplied_items.jsp" method="post">
                             <input type="hidden" name="supplierId" value="${supplier.supplierId}"/>
                             <input type="hidden" name="supplierName" value="${supplier.supplierName}"/>
                             <td><input type="submit" value="View Supplied Item Info" /></td>
                         </form>
-                        <form action="delete_supplier_action.jsp">
+                        <form action="delete_supplier_action.jsp" method="post">
                             <input type="hidden" name="supplierId" value="${supplier.supplierId}"/>
                             <td><input type="submit" value="Delete" /></td>
                         </form>
-                        <form action="update_supplier.jsp">
+                        <form action="update_supplier.jsp" method="post">
                             <input type="hidden" name="supplierId" value="${supplier.supplierId}"/>
                             <td><input type="submit" value="Update" /></td>
                         </form>

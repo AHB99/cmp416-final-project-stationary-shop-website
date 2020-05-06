@@ -18,7 +18,7 @@
         <jsp:useBean id="shopBranchMgr" class="Beans.ShopBranchMgr" />
         ${shopBranchMgr.retrieveShopBranches()}
         <h1>Insert Shop Sale</h1>
-        <form action="select_shopsale_items.jsp">
+        <form action="select_shopsale_items.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="shop_id">Shop Branch of Sale: </label>

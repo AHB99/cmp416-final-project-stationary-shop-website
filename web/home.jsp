@@ -18,7 +18,7 @@
         <h1>Main Menu</h1>
         <fieldset>
             <legend>Insert New Entry</legend>
-            <form action="insert_entity_action.jsp">
+            <form action="insert_entity_action.jsp" method="post">
                 <select name="entity_choice">
                     <option value="department">Department</option>
                     <option value="shop_branch">Shop Branch</option>
@@ -37,7 +37,7 @@
         </fieldset>
         <fieldset>
             <legend>View/Update/Delete Data</legend>
-            <form action="view_entity_action.jsp">
+            <form action="view_entity_action.jsp" method="post">
                 <select name="entity_choice">
                     <option value="department">Department</option>
                     <option value="shop_branch">Shop Branch</option>
@@ -54,7 +54,7 @@
         </fieldset>
         <fieldset>
             <legend>View Graphs: </legend>
-            <form action="graph_menu_action.jsp">
+            <form action="graph_menu_action.jsp" method="post">
                 <select name="graph_choice">
                     <option value="employee_salary_hist">Employee Salary Histogram</option>
                     <option value="monthly_profit_line">Monthly Profit Graph</option>

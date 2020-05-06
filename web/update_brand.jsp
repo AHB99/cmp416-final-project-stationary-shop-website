@@ -19,7 +19,7 @@
         </jsp:useBean>
         ${selectedBrand.retrieveBrand()}
         <h1>Update Brand</h1>
-        <form action="update_brand_action.jsp">
+        <form action="update_brand_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="brand_name">Brand Name: </label>

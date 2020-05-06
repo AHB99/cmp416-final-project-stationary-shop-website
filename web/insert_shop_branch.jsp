@@ -16,7 +16,7 @@
         <%@ include file="login_checker_gist" %>
 
         <h1>Insert New Shop Branch</h1>
-        <form action="insert_shop_branch_action.jsp">
+        <form action="insert_shop_branch_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="location">Location: </label>

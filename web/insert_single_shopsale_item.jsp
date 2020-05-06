@@ -22,7 +22,7 @@
         <c:set var="error_msg" value="Error! No unmatched items available" scope="request" />
         <jsp:forward page="action_outcome.jsp" />
     </c:if>
-    <form action="insert_single_shopsale_item_action.jsp">
+    <form action="insert_single_shopsale_item_action.jsp" method="post">
         <fieldset>
             <label for="item_id">Item: </label>
             <select id="item_id" name="itemId">

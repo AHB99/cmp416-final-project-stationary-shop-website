@@ -19,7 +19,7 @@
         ${shopBranchMgr.retrieveShopBranches()}
 
         <h1>Select Shop</h1>
-        <form action="select_seller_item_info.jsp">
+        <form action="select_seller_item_info.jsp" method="post">
             <fieldset>
                 <label for="shop_id">Shop Branch: </label>
                 <select id="shop_id" name="shopId">

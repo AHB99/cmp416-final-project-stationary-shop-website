@@ -16,7 +16,7 @@
         <%@ include file="login_checker_gist" %>
 
         <h1>Insert New Department</h1>
-        <form action="insert_department_action.jsp">
+        <form action="insert_department_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="department_name">Department Name: </label>

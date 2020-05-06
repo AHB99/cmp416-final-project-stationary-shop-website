@@ -21,7 +21,9 @@
         ${selectedItem.retrieveItem()}
         <jsp:useBean id="brandMgr" class="Beans.BrandMgr" />
         ${brandMgr.retrieveBrands()}
-        <form action="update_item_action.jsp">
+        <h1>Update Item</h1>
+
+        <form action="update_item_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="item_name">Name: </label>

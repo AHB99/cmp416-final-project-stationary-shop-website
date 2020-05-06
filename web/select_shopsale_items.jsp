@@ -31,7 +31,7 @@
         ${itemsToSelect.retrieveItemsByShopSold(currentShopSale.shopBranch.shopId)}
         
         <h1>Select Item Quantities Sold</h1>
-        <form action="insert_shopsale_action.jsp">
+        <form action="insert_shopsale_action.jsp" method="post">
 
             <table border="1" id="item_table">
                 <thead>

@@ -23,7 +23,7 @@
 
         <fieldset>
             <legend>Filter By:</legend>
-            <form action="view_stockpurchase.jsp">
+            <form action="view_stockpurchase.jsp" method="post">
                 <label for="shop">Shop Branch: </label>
                 <select id="shop" name="shopId">
                     <c:forEach items="${shopBranchMgr.shopList}" var="shop">
@@ -33,7 +33,7 @@
                 <input type="hidden" name="filter_by" value="shop_branch_fil"/>
                 <input type="submit" value="Filter by Shop Branch" /><br/>
             </form>
-            <form action="view_stockpurchase.jsp">
+            <form action="view_stockpurchase.jsp" method="post">
                 <input type="hidden" name="filter_by" value=""/>
                 <input type="submit" value="Clear Filters" /><br/>
             </form>
@@ -77,15 +77,15 @@
                     <tr>
                         <td>${stockPurchase.shopBranch.location}</td>
                         <td>${stockPurchase.purchaseDate}</td>
-                <form action="view_stockpurchases_items.jsp">
+                <form action="view_stockpurchases_items.jsp" method="post">
                     <input type="hidden" name="purchaseId" value="${stockPurchase.purchaseId}"/>
                     <td><input type="submit" value="View Purchased Items" /></td>
                 </form>
-                <form action="delete_stockpurchase_action.jsp">
+                <form action="delete_stockpurchase_action.jsp" method="post">
                     <input type="hidden" name="purchaseId" value="${stockPurchase.purchaseId}"/>
                     <td><input type="submit" value="Delete" /></td>
                 </form>
-                <form action="update_stockpurchase.jsp">
+                <form action="update_stockpurchase.jsp" method="post">
                     <input type="hidden" name="location" value="${stockPurchase.shopBranch.location}"/>
                     <input type="hidden" name="purchaseDate" value="${stockPurchase.purchaseDate}"/>
                     <input type="hidden" name="purchaseId" value="${stockPurchase.purchaseId}"/>

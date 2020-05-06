@@ -86,11 +86,11 @@
                         <td>${employee.address}</td>
                         <td>${employee.department.departmentName}</td>
 
-                <form action="view_single_shop_branch.jsp">
+                <form action="view_single_shop_branch.jsp" method="post">
                     <input type="hidden" name="shopId" value="${employee.shopBranch.shopId}"/>
                     <td><input type="submit" value="View Shop Branch Info" /></td>
                 </form>
-                <form action="view_single_employee.jsp">
+                <form action="view_single_employee.jsp" method="post">
                     <input type="hidden" name="employeeId" value="${employee.supervisor.employeeId}"/>
                     <c:choose>
                         <c:when test="${employee.supervisor.employeeId != 0}">
@@ -104,11 +104,11 @@
                         </c:choose>
 
                 </form>
-                <form action="delete_employee_action.jsp">
+                <form action="delete_employee_action.jsp" method="post">
                     <input type="hidden" name="employeeId" value="${employee.employeeId}"/>
                     <td><input type="submit" value="Delete" /></td>
                 </form>
-                <form action="update_employee.jsp">
+                <form action="update_employee.jsp" method="post">
                     <input type="hidden" name="employeeId" value="${employee.employeeId}"/>
 
                     <td><input type="submit" value="Update" /></td>

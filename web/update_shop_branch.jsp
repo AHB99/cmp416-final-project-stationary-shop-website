@@ -20,7 +20,7 @@
         </jsp:useBean>
         ${selectedShopBranch.retrieveShopBranch()}
         <h1>Update Shop Branch</h1>
-        <form action="update_shop_branch_action.jsp">
+        <form action="update_shop_branch_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="location">Location: </label>

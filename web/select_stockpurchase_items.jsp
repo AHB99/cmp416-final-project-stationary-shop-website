@@ -23,7 +23,7 @@
 
 
         <h1>Select Item Quantities Purchased</h1>
-        <form action="select_stockpurchase_items_action.jsp">
+        <form action="select_stockpurchase_items_action.jsp" method="post">
 
             <table border="1">
                 <thead>

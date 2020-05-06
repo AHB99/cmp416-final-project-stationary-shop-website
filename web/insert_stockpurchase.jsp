@@ -18,7 +18,7 @@
         <jsp:useBean id="shopBranchMgr" class="Beans.ShopBranchMgr" />
         ${shopBranchMgr.retrieveShopBranches()}
         <h1>Insert Stock Purchase</h1>
-        <form action="initialize_stockpurchase_for_insert.jsp">
+        <form action="initialize_stockpurchase_for_insert.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="shop_id">Shop Branch of Stock Purchase: </label>
@@ -28,7 +28,7 @@
                     </c:forEach>        
                 </select><br/>
                 <label for="purchase_date">Date: </label>
-                <input type="date" id="purchase_date" required name="purchaseDate" value="" />
+                <input type="date" id="purchase_date" required name="purchaseDate" value="" /><br/>
                 <input type="submit" value="Add items" />
             </fieldset>
         </form>

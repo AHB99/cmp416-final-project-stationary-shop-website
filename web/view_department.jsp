@@ -19,13 +19,13 @@
         <jsp:useBean id="departmentMgr" class="Beans.DepartmentMgr"/>
         <fieldset>
             <legend>Filter By:</legend>
-            <form action="view_department.jsp">
+            <form action="view_department.jsp" method="post">
                 <label for="name_partial">Name (Partial Phrase): </label>
                 <input type="text" id="name_partial" required name="namePartialPhrase" value=""/>
                 <input type="hidden" name="filter_by" value="name_partial_phrase_fil"/>
                 <input type="submit" value="Filter by Name" /><br/>
             </form>
-            <form action="view_department.jsp">
+            <form action="view_department.jsp" method="post">
                 <input type="hidden" name="filter_by" value=""/>
                 <input type="submit" value="Clear Filters" /><br/>
             </form>
@@ -60,11 +60,11 @@
                 <c:forEach items="${departmentMgr.departmentList}" var="dep">
                     <tr>
                         <td>${dep.departmentName}</td>
-                <form action="delete_department_action.jsp">
+                <form action="delete_department_action.jsp" method="post">
                     <input type="hidden" name="departmentId" value="${dep.departmentId}"/>
                     <td><input type="submit" value="Delete" /></td>
                 </form>
-                <form action="update_department.jsp">
+                <form action="update_department.jsp" method="post">
                     <input type="hidden" name="departmentId" value="${dep.departmentId}"/>
                     <td><input type="submit" value="Update" /></td>
                 </form>

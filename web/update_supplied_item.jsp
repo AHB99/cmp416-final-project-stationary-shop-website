@@ -32,7 +32,7 @@
         
         <h1>Update Item Price for Supplier</h1>
 
-        <form action="update_supplied_item_action.jsp">
+        <form action="update_supplied_item_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 

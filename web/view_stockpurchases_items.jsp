@@ -43,13 +43,13 @@
                         <td>${stockPurchaseItem.suppliedItem.item.itemBrand.brandName}</td>
                         <td>${stockPurchaseItem.suppliedItem.supplierPrice}</td>
                         <td>${stockPurchaseItem.quantity}</td>
-                <form action="delete_stockpurchases_item_action.jsp">
+                <form action="delete_stockpurchases_item_action.jsp" method="post">
                     <input type="hidden" name="purchaseId" value="${selectedStockPurchase.purchaseId}"/>
                     <input type="hidden" name="supplierId" value="${stockPurchaseItem.suppliedItem.supplier.supplierId}"/>
                     <input type="hidden" name="itemId" value="${stockPurchaseItem.suppliedItem.item.itemId}"/>
                     <td><input type="submit" value="Delete" /></td>
                 </form>
-                <form action="update_stockpurchases_item.jsp">
+                <form action="update_stockpurchases_item.jsp" method="post" method="post" method="post">
                     <input type="hidden" name="purchaseId" value="${selectedStockPurchase.purchaseId}"/>
                     <input type="hidden" name="supplierId" value="${stockPurchaseItem.suppliedItem.supplier.supplierId}"/>
                     <input type="hidden" name="itemId" value="${stockPurchaseItem.suppliedItem.item.itemId}"/>
@@ -60,7 +60,7 @@
         </c:forEach>
     </tbody>
 </table>
-<form action="insert_single_stockpurchase_item.jsp">
+<form action="insert_single_stockpurchase_item.jsp" method="post">
     <input type="hidden" name="purchaseId" value="${selectedStockPurchase.purchaseId}"/>
 
     <td><input type="submit" value="Add Item" /></td>

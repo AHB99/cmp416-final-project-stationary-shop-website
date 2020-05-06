@@ -16,7 +16,7 @@
         <%@ include file="login_checker_gist" %>
 
         <h1>Insert New Supplier</h1>
-        <form action="insert_supplier_action.jsp">
+        <form action="insert_supplier_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="supplier_name">Name: </label>

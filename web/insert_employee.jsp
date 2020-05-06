@@ -23,7 +23,7 @@
         <jsp:useBean id="shopBranchMgr" class="Beans.ShopBranchMgr" />
         ${shopBranchMgr.retrieveShopBranches()}
         
-        <form action="insert_employee_action.jsp">
+        <form action="insert_employee_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="first_name">First Name: </label>

@@ -16,7 +16,7 @@
         <%@ include file="login_checker_gist" %>
 
         <h1>Update Stock Purchase</h1>
-        <form action="update_stockpurchase_action.jsp">
+        <form action="update_stockpurchase_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="location">Shop Branch of Stock Purchase: </label>

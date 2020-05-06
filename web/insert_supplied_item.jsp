@@ -22,7 +22,7 @@
         
         <h1>Select Supplier</h1>
         
-        <form action="select_supplied_item_info.jsp">
+        <form action="select_supplied_item_info.jsp" method="post">
             <fieldset>
                 <label for="supplier_id">Supplier: </label>
                 <select id="supplier_id" name="supplierId">

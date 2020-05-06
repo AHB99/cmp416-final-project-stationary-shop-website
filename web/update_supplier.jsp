@@ -20,7 +20,7 @@
         ${selectedSupplier.retrieveSupplier()}
         
         <h1>Update Supplier</h1>
-        <form action="update_supplier_action.jsp">
+        <form action="update_supplier_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="supplier_name">Name: </label>

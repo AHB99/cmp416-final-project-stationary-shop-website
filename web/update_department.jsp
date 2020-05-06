@@ -20,7 +20,7 @@
         </jsp:useBean>
         ${selectedDepartment.retrieveDepartment()}
         <h1>Update Department</h1>
-        <form action="update_department_action.jsp">
+        <form action="update_department_action.jsp" method="post">
             <fieldset>
                 <legend>Enter Details</legend>
                 <label for="department_name">Department Name: </label>

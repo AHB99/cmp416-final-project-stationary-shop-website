@@ -22,7 +22,7 @@
             <jsp:forward page="action_outcome.jsp" />
         </c:if>
         <h1>Select Item(s)</h1>
-        <form action="insert_seller_item_action.jsp">
+        <form action="insert_seller_item_action.jsp" method="post">
             <fieldset>
                 <label for="item_id">Item(s): </label><br/>
                 <select id="item_id" name="itemIds" multiple="multiple">
