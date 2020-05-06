@@ -58,6 +58,7 @@
                 <select name="graph_choice">
                     <option value="employee_salary_hist">Employee Salary Histogram</option>
                     <option value="monthly_profit_line">Monthly Profit Graph</option>
+                    <option value="items_brand_pie">Items By Brand Pie Chart</option>
 
                 </select>
                 <input type="submit" value="Graph" />

@@ -103,6 +103,21 @@ public class Brand {
         return false;
     }
     
+    public int getItemCount(){
+        try {
+            CachedRowSet crs = DbCredentials.getConfiguredConnection();
+            crs.setCommand("SELECT count(*) as item_count FROM item where brand = ? group by brand");
+            crs.setInt(1, brandId);
+            crs.execute();
+            if (crs.next()) {
+                return crs.getInt("item_count");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Brand.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+    
     private Integer brandId;
     private String brandName;
     

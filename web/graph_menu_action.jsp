@@ -22,6 +22,9 @@
         <c:when test="${param.graph_choice == 'monthly_profit_line'}">
             <jsp:forward page="graph_monthly_profit_line.jsp" />
         </c:when>
+        <c:when test="${param.graph_choice == 'items_brand_pie'}">
+            <jsp:forward page="graph_items_by_brand_pie.jsp" />
+        </c:when>
     </c:choose>
 </body>
 </html>
