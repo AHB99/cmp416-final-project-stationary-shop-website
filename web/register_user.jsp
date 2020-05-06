@@ -20,13 +20,13 @@
         <form action="register_user_action.jsp" method="post">
             <fieldset>
                 <label for="username">Username:</label>
-                <input id="username" type="text" name="username" value="" required/>
+                <input id="username" type="text" name="username" value="" required/><br/>
                 <label for="password">Password</label>
-                <input id="password" type="password" name="password" value="" required/>
+                <input id="password" type="password" name="password" value="" required/><br/>
                 <label for="firstName">First name</label>
-                <input id="firstName" type="text" name="firstName" value="" required />
+                <input id="firstName" type="text" name="firstName" value="" required /><br/>
                 <label for="lastName">Last name</label>
-                <input id="lastName" type="text" name="lastName" value="" required/>
+                <input id="lastName" type="text" name="lastName" value="" required/><br/>
             </fieldset>
             <input type="submit" value="Register" />
         </form>
