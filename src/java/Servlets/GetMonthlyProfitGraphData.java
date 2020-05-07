@@ -42,15 +42,23 @@ public class GetMonthlyProfitGraphData extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            ArrayList<MonthlyRevenueExpense> fullProfitList = MonthlyRevenueExpense.getFullMonthlyProfit();
+            String choice = request.getParameter("selectedShop");
+            
+            ArrayList<MonthlyRevenueExpense> profitList;
+            if (choice.equals("full")){
+                profitList = MonthlyRevenueExpense.getTotalMonthlyProfit();
+            }
+            else{
+                int choiceInt = Integer.parseInt(choice);
+                profitList = MonthlyRevenueExpense.getTotalMonthlyProfitByShop(choiceInt);
+            }
             ArrayList<String> profitStrings = new ArrayList<>();
             
-            for (MonthlyRevenueExpense monthlyProfit : fullProfitList) {
+            for (MonthlyRevenueExpense monthlyProfit : profitList) {
                 profitStrings.add("[\"" + monthlyProfit.getDateOfAccount().format(DateTimeFormatter.ofPattern("YYYY-MMM-dd")) + "\", " + monthlyProfit.getAccountValue() + "]");
             }
-            String profitList = "[" + String.join(",", profitStrings) + "]";
-            out.println(profitList);
+            String profitListAsString = "[" + String.join(",", profitStrings) + "]";
+            out.println(profitListAsString);
         }
     }
 

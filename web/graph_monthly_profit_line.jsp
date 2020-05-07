@@ -15,10 +15,11 @@
         <script type="text/javascript" src="jquery_lib/jquery-3.5.0.min.js"></script>
         <script type="text/javascript">
             google.charts.load('current', {'packages': ['line']});
-            google.charts.setOnLoadCallback(getDataFromDb);
 
-            function getDataFromDb() {
-                $.post("GetMonthlyProfitGraphData", dbRetrievalCallback);
+            function onGraphButtonClicked() {
+                var selectedShop = $("#shop_selection :selected").val();
+                var param = {"selectedShop" : selectedShop};
+                $.post("GetMonthlyProfitGraphData", param, dbRetrievalCallback);
             }
 
             function dbRetrievalCallback(fetched) {
@@ -39,10 +40,12 @@
 
                 var options = {
                     chart: {
-                        title: 'Monthly Profit',
+                        title: 'Monthly Profit of '+ $("#shop_selection :selected").text(),
                     },
                     width: 900,
-                    height: 500
+                    height: 500,
+                    vAxis: {title: 'Profit'},
+                    legend: { position: 'none' },
                 };
 
                 var chart = new google.charts.Line(document.getElementById('monthly_profit_line'));
@@ -53,8 +56,23 @@
     </head>
     <body>
         <%@ include file="login_checker_gist" %>
-
+        
+        <jsp:useBean id="shopBranchMgr" class="Beans.ShopBranchMgr" />
+        ${shopBranchMgr.retrieveShopBranches()}
+        
         <h1>Monthly Profit Line Graph</h1>
+        <br/>
+        <fieldset>
+            <legend>Select Shop to Graph:</legend>
+            <label for="shop">Shop Branch: </label>
+            <select id="shop_selection">
+                <option value="full">Full Company</option>
+                <c:forEach items="${shopBranchMgr.shopList}" var="shop">
+                    <option value="${shop.shopId}">${shop.location}</option>
+                </c:forEach>        
+            </select>
+            <input type="button" value="Graph" onclick="onGraphButtonClicked();"/><br/>            
+        </fieldset>
         <br/>
         <div id="monthly_profit_line" style="width: 900px; height: 500px"></div>
         <br/>
