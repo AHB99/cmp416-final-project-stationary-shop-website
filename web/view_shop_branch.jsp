@@ -21,7 +21,7 @@
             <legend>Filter By:</legend>
             <form action="view_shop_branch.jsp" method="post">
                 <label for="name_partial">Location Name (Partial Phrase): </label>
-                <input type="text" id="name_partial" required name="namePartialPhrase" value=""/>
+                <input type="text" id="name_partial" required name="namePartialPhrase" value="${param.namePartialPhrase}"/>
                 <input type="hidden" name="filter_by" value="name_partial_phrase_fil"/>
                 <input type="submit" value="Filter by Location Name" /><br/>
             </form>
